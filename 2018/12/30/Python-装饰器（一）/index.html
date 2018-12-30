@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo.jpg?v=5.1.4">
+
+
+
+
+
+
+
+  <meta name="keywords" content="Python,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="#Python高级编程之装饰器（一） ##1、函数作用域LEGB LEGB的掌握在函数之间值的选择非常重要，若搞混了这个规则，所编写的函数可能会事与愿违，编写函数时一定要考虑到这个规则。">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python 装饰器（一）">
+<meta property="og:url" content="http://yoursite.com/2018/12/30/Python-装饰器（一）/index.html">
+<meta property="og:site_name" content="Welocome to Vergilben&#39; s blog!">
+<meta property="og:description" content="#Python高级编程之装饰器（一） ##1、函数作用域LEGB LEGB的掌握在函数之间值的选择非常重要，若搞混了这个规则，所编写的函数可能会事与愿违，编写函数时一定要考虑到这个规则。">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-12-30T06:29:58.504Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python 装饰器（一）">
+<meta name="twitter:description" content="#Python高级编程之装饰器（一） ##1、函数作用域LEGB LEGB的掌握在函数之间值的选择非常重要，若搞混了这个规则，所编写的函数可能会事与愿违，编写函数时一定要考虑到这个规则。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/12/30/Python-装饰器（一）/">
+
+
+
+
+
+  <title>Python 装饰器（一） | Welocome to Vergilben' s blog!</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Welocome to Vergilben' s blog!</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Just be free</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/30/Python-装饰器（一）/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Vergilben">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/loco.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welocome to Vergilben' s blog!">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Python 装饰器（一）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-30T14:28:38+08:00">
+                2018-12-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>#Python高级编程之装饰器（一）</p>
+<p>##1、函数作用域LEGB</p>
+<p>LEGB的掌握在函数之间值的选择非常重要，若搞混了这个规则，所编写的函数可能会事与愿违，编写函数时一定要考虑到这个规则。</p>
+<a id="more"></a>
+<p><strong>LEGB：L&gt;E&gt;G&gt;B</strong></p>
+<p>L：local（function）；函数内部作用域；函数内的名字空间<br>E：enclosing function locals；函数内部与内嵌函数之间；外部嵌套函数的名字空间<br>G：global（module）；全局作用域；函数定义所在模块（文件）的名字空间<br>B：build-in（Python）；内置作用域；Python内置模块的名字空间</p>
+<blockquote>
+<p>Python的命名空间是一个字典，字典内保存了变量名称与对象之间的映射关系，因此，查找变量名就是在命名空间字典中查找键-值对。LEGB就是用来规定命名空间查找顺序的规则。</p>
+</blockquote>
+<p>用代码来解释一下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">dog = 1 #global全局变量</span><br><span class="line">def first():</span><br><span class="line">	dog = 2 #dog=2则是函数内部与内嵌函数之间的值</span><br><span class="line">	def second():</span><br><span class="line">		dog = 3</span><br><span class="line">		print(&apos;local&apos;,dog) #函数内部作用域，先在second这个函数内部查找dog的值</span><br><span class="line">	second()</span><br><span class="line">	print(&apos;enclosing function locals&apos;,dog) #外部嵌套函数的名字空间</span><br><span class="line"></span><br><span class="line">first()</span><br><span class="line">print(&apos;global&apos;,dog) #全局作用域</span><br></pre></td></tr></table></figure></p>
+<p>其运行结果如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">local 3</span><br><span class="line">enclosing function locals 2</span><br><span class="line">global 1</span><br></pre></td></tr></table></figure></p>
+<p>将上述代码中函数内部作用域上面给dog的赋值注释掉：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">def second():</span><br><span class="line">        #dog = 3</span><br><span class="line">        print(&apos;local&apos;,dog) #函数内部作用域</span><br></pre></td></tr></table></figure></p>
+<p>再运行一次：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">local 2</span><br><span class="line">enclosing function locals 2 #在函数内部dog=3已经没有了，所以按照规则找到&apos;E&apos;，即函数内部与内嵌函数之间的值</span><br><span class="line">global 1</span><br></pre></td></tr></table></figure>
+<p>由此可见，查找dog时是从其函数内部开始查找的，按照以上<strong><em>L&gt;E&gt;G&gt;B</em></strong>的规则。</p>
+<p>##2、Python的闭包<br><strong>闭包的概念：Closure：内部函数中对嗯closing作用域的变量进行引用</strong><br>开始之前，先了解一下函数的实质与属性</p>
+<blockquote>
+<p>1）函数是一个对象<br>   2）函数执行完成后内部变量被Python解释器回收（如果产生了返回<em>return</em>，那么这个变量是不会被回收的）<br>   3）闭包函数可以近似的看成是简化的函数对象（可以认为是一个函数内部又嵌套了一个函数）</p>
+</blockquote>
+<p>来看下面一个例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def foo():</span><br><span class="line">	print(&apos;hello world from foo!&apos;)</span><br><span class="line">	def bar():</span><br><span class="line">		print(&apos;hello world from bar!&apos;)</span><br></pre></td></tr></table></figure></p>
+<p>我们只调用foo函数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">结果是这样的：</span><br><span class="line">```hello world from foo!</span><br></pre></td></tr></table></figure></p>
+<p>如上所示，函数只会执行第一层函数，第二层bar（）函数不会被执行。如果把bar（）函数作为一个值返回给foo（）函数呢？<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">def foo():</span><br><span class="line">	print(&apos;hello world from foo!&apos;)</span><br><span class="line">	def bar():</span><br><span class="line">		print(&apos;hello world from bar!&apos;)</span><br><span class="line">	return bar</span><br></pre></td></tr></table></figure></p>
+<p>我们试着输出一下foo（）函数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">f = foo() #定义一个变量f来接收foo（）函数的执行结果</span><br><span class="line">f()</span><br></pre></td></tr></table></figure></p>
+<p>则这段代码的执行结果为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hello world from foo!</span><br><span class="line">hello world from bar!</span><br></pre></td></tr></table></figure></p>
+<p>在上面的例子里，首先定义了一个函数foo,接着在foo函数内部又嵌套定义了一个函数bar,然后返回函数bar的函数名，这就是闭包函数的定义方式。<br>再看一个例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def foo():</span><br><span class="line">	name = &apos;Vergilben&apos;</span><br><span class="line">	print(&apos;hello world from foo!&apos;)</span><br><span class="line">	def bar():</span><br><span class="line">		print(name)</span><br><span class="line">		print(&apos;hello world from bar!&apos;)</span><br><span class="line">	return bar</span><br></pre></td></tr></table></figure></p>
+<p>这个例子在外层函数也就是第一层foo（）函数中定义了一个变量name，在执行打印上面的代码时，会先在bar（）函数内查找name这个变量，bar（）里面没有，根据LEGB，他就跑到外层找了。这里的内层函数引用了外层函数的局部变量。<br>运行结果如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hello world from foo!</span><br><span class="line">Vergilben</span><br><span class="line">hello world from bar!</span><br></pre></td></tr></table></figure></p>
+<p>注意：闭包函数都有一个特有的属性，也就是上面提到过的closure<br>我们来打印一下上面例子里f的<em>closure</em>属性：<br><code>(&lt;cell at 0x02F6CD50: str object at 0x02F7B7A0&gt;,)</code></p>
+<p>可以看到<strong>closure</strong>属性的打印结果是一个元组形式的，其值就是f函数的外层函数作用域</p>
+<p>总结一下：</p>
+<blockquote>
+<p>在函数内部定义的函数，称为内部函数<br>   内部函数调用了外部函数的局部变量<br>   即使内部函数返回了，还是可以使用局部变量<br>   通常闭包函数的内层函数都要被返回给外部函数<br>   闭包函数的外部函数可以在任何地方被调用，而不再受函数定义时层级的限制</p>
+</blockquote>
+<p>闭包函数更像是一种方法，使代码更简洁，可读性更强，也更容易修改。因此学习装饰器这种强大的方法前有必要了解并会使用闭包函数。在我学习高级编程的过程中，装饰器这一节着实卡到了很久很久，学习了很长时间还处于不太会的状态时我开始上网寻找方法，最后竟然发现我看的两本书上没有对闭包函数以及其他方面的解释（可能是我太菜了），学习的过程中萌发出写博客记录一下的想法，于是上网搜集资料，找素材写出了这篇基础的博客，后面我还会继续更新我在Python高级编程学习中遇到的问题，以及Python自运维方面的学习，可能还会有Linux方面，记录我的学习历程，希望我也可以帮助到更多的人。</p>
+<p>我也是个Python的初学者，如果您在阅读中发现问题或更好的解决方法请联系我：<a href="mailto:highg767@qq.com" target="_blank" rel="noopener">highg767@qq.com</a>，如果您觉得有用，欢迎分享给更多的人。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/30/测试/" rel="next" title="测试">
+                <i class="fa fa-chevron-left"></i> 测试
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/30/Python-装饰器（二）/" rel="prev" title="Python 装饰器（二）">
+                Python 装饰器（二） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/loco.jpg" alt="Vergilben">
+            
+              <p class="site-author-name" itemprop="name">Vergilben</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Vergilben</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
