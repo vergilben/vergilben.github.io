@@ -62,7 +62,7 @@
 
 
 
-  <meta name="keywords" content="测试,">
+  <meta name="keywords" content="Quetsion,">
 
 
 
@@ -73,18 +73,18 @@
 
 
 
-<meta name="description" content="终于做好了，测试一下准备写东西！ `Is this codes?`  Is this quote?">
-<meta name="keywords" content="测试">
+<meta name="description" content="Some Question此篇博客长期更新，主要记录我在学习中遇到的一些知识性问题。">
+<meta name="keywords" content="Quetsion">
 <meta property="og:type" content="article">
-<meta property="og:title" content="测试">
-<meta property="og:url" content="http://yoursite.com/2018/12/30/测试/index.html">
+<meta property="og:title" content="遇到的问题">
+<meta property="og:url" content="http://yoursite.com/2018/12/30/遇到的问题/index.html">
 <meta property="og:site_name" content="Welocome to Vergilben&#39; s blog!">
-<meta property="og:description" content="终于做好了，测试一下准备写东西！ `Is this codes?`  Is this quote?">
+<meta property="og:description" content="Some Question此篇博客长期更新，主要记录我在学习中遇到的一些知识性问题。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-12-30T13:22:08.560Z">
+<meta property="og:updated_time" content="2018-12-30T13:44:43.094Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="测试">
-<meta name="twitter:description" content="终于做好了，测试一下准备写东西！ `Is this codes?`  Is this quote?">
+<meta name="twitter:title" content="遇到的问题">
+<meta name="twitter:description" content="Some Question此篇博客长期更新，主要记录我在学习中遇到的一些知识性问题。">
 
 
 
@@ -114,13 +114,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/12/30/测试/">
+  <link rel="canonical" href="http://yoursite.com/2018/12/30/遇到的问题/">
 
 
 
 
 
-  <title>测试 | Welocome to Vergilben' s blog!</title>
+  <title>遇到的问题 | Welocome to Vergilben' s blog!</title>
   
 
 
@@ -247,7 +247,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/30/测试/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/30/遇到的问题/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Vergilben">
@@ -264,7 +264,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">测试</h1>
+          <h1 class="post-title" itemprop="name headline">遇到的问题</h1>
         
 
         <div class="post-meta">
@@ -276,7 +276,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-30T13:32:16+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-30T21:23:07+08:00">
                 2018-12-30
               </time>
             
@@ -314,11 +314,28 @@
       
 
       
-        <p>终于做好了，测试一下准备写东西！</p>
-<pre><code>`Is this codes?`
-</code></pre><blockquote>
-<p>Is this quote?</p>
+        <h1 id="Some-Question"><a href="#Some-Question" class="headerlink" title="Some Question"></a>Some Question</h1><p>此篇博客长期更新，主要记录我在学习中遇到的一些知识性问题。<br><a id="more"></a></p>
+<h2 id="1、-args-和-kwargs"><a href="#1、-args-和-kwargs" class="headerlink" title="1、*args 和 **kwargs"></a>1、<code>*args</code> 和 <code>**kwargs</code></h2><p>我在前面学习“类”的过程中遇到过这个东西，当时并没有太在意，但现在我发现许多代码里面都有它们的身影，还是挺重要的，所以就详细地查了查，在这里解释一下：</p>
+<blockquote>
+<p>当函数的参数不确定时，可以使用<code>*args</code>和<code>**kwargs</code>,<code>*args</code>没有key值，<code>**kwargs</code>有key值。这两个是python中的可变参数。<code>*args</code>表示任何多个无名参数，它是一个tuple；<code>**kwargs</code>表示关键字参数，它是一个dict。</p>
 </blockquote>
+<blockquote>
+<p><strong>注意：</strong>同时使用<code>args</code>和<code>**kwargs</code>时，必须<code>*args</code>参数列要在<code>**kwargs</code>前。</p>
+</blockquote>
+<p>比如，你想定义一个函数来求算术和，如果要求几个数的和不确定呢？数量过于庞大怎么办？<br>用代码展示一下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">def foo(x,*args):</span><br><span class="line">	print(x)</span><br><span class="line">	print(args)</span><br><span class="line"> </span><br><span class="line">foo(1,2,3,4,5)  #其中的2,3,4,5都给了args</span><br></pre></td></tr></table></figure></p>
+<p>运行结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">(2, 3, 4, 5)</span><br></pre></td></tr></table></figure></p>
+<p><code>*args</code>接收了后面四个数值，现在我们可以感受到它的作用了。如果你不确定你会用到多少参数，就用它。</p>
+<p>用个例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def foo(*args):</span><br><span class="line">    print(sum(args))</span><br><span class="line"></span><br><span class="line">foo(1,2,3,4,5)</span><br></pre></td></tr></table></figure></p>
+<p>运行结果：<code>15</code></p>
+<p>而<code>**kwargs</code>，正如上文，我们可以当它是个字典，用代码演示一下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def foo(x,**kwargs):</span><br><span class="line">    print(x)</span><br><span class="line">    print(kwargs)</span><br><span class="line">foo(1,y=1,a=2,b=3,c=4) #将y=1,a=2,b=3,c=4以字典的方式给了kwargs</span><br></pre></td></tr></table></figure></p>
+<p>运行结果如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">&#123;&apos;y&apos;: 1, &apos;a&apos;: 2, &apos;b&apos;: 3, &apos;c&apos;: 4&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>注意！：</strong>顺序必须是：位置参数、<code>*args</code>、<code>**kwargs</code>（如果有默认参数的话，默认参数在位置参数后面）<br>否则会报错的。</p>
+<p>正确示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">def foo(x,*args,**kwargs):</span><br><span class="line">    print(x)</span><br><span class="line">    print(args)</span><br><span class="line">    print(kwargs)</span><br><span class="line">foo(1,2,3,4,y=1,a=2,b=3,c=4) #将1传给了x，将2,3,4以元组方式传给了args，y=1,a=2,b=3,c=4以字典的方式给了kwargs</span><br></pre></td></tr></table></figure></p>
+<p>运行结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">(2, 3, 4)</span><br><span class="line">&#123;&apos;y&apos;: 1, &apos;a&apos;: 2, &apos;b&apos;: 3, &apos;c&apos;: 4&#125;</span><br></pre></td></tr></table></figure></p>
+<p>错误示例（顺序错误）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">def foo(x,**kwargs,*args):</span><br><span class="line">    print(x)</span><br><span class="line">    print(args)</span><br><span class="line">    print(kwargs)</span><br><span class="line">foo(1,y=1,a=2,b=3,c=4,2,3,4)</span><br></pre></td></tr></table></figure></p>
+<p>运行结果：<br><code>SyntaxError: invalid syntax</code></p>
+<p>本文部分摘录于博客：<a href="https://www.cnblogs.com/xuyuanyuan123/p/6674645.html" target="_blank" rel="noopener">https://www.cnblogs.com/xuyuanyuan123/p/6674645.html</a></p>
+<p>至此，这部分的讲解告一段落。此篇博客不定期更新。</p>
 
       
     </div>
@@ -336,7 +353,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/测试/" rel="tag"># 测试</a>
+            <a href="/tags/Quetsion/" rel="tag"># Quetsion</a>
           
         </div>
       
@@ -349,8 +366,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/30/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2018/12/30/Python-装饰器（二）/" rel="next" title="Python 装饰器（二）">
+                <i class="fa fa-chevron-left"></i> Python 装饰器（二）
               </a>
             
           </div>
@@ -358,10 +375,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/12/30/Python-装饰器（一）/" rel="prev" title="Python 装饰器（一）">
-                Python 装饰器（一） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -413,8 +426,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -467,6 +489,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Some-Question"><span class="nav-number">1.</span> <span class="nav-text">Some Question</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、-args-和-kwargs"><span class="nav-number">1.1.</span> <span class="nav-text">1、*args 和 **kwargs</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

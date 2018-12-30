@@ -73,18 +73,18 @@
 
 
 
-<meta name="description" content="#Python高级编程之装饰器（二） ##1、理解装饰器装饰器是一个用于封装函数或类的代码的工具，它显式地将封装器应用到函数或类上，从而使它们选择加入到装饰器的功能中。例如：装饰器可以将函数注册到信号系统，或者注册到Web应用程序的注册表中。">
+<meta name="description" content="Python高级编程之装饰器（二）1、理解装饰器装饰器是一个用于封装函数或类的代码的工具，它显式地将封装器应用到函数或类上，从而使它们选择加入到装饰器的功能中。例如：装饰器可以将函数注册到信号系统，或者注册到Web应用程序的注册表中。">
 <meta name="keywords" content="Python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python 装饰器（二）">
 <meta property="og:url" content="http://yoursite.com/2018/12/30/Python-装饰器（二）/index.html">
 <meta property="og:site_name" content="Welocome to Vergilben&#39; s blog!">
-<meta property="og:description" content="#Python高级编程之装饰器（二） ##1、理解装饰器装饰器是一个用于封装函数或类的代码的工具，它显式地将封装器应用到函数或类上，从而使它们选择加入到装饰器的功能中。例如：装饰器可以将函数注册到信号系统，或者注册到Web应用程序的注册表中。">
+<meta property="og:description" content="Python高级编程之装饰器（二）1、理解装饰器装饰器是一个用于封装函数或类的代码的工具，它显式地将封装器应用到函数或类上，从而使它们选择加入到装饰器的功能中。例如：装饰器可以将函数注册到信号系统，或者注册到Web应用程序的注册表中。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-12-30T06:32:41.266Z">
+<meta property="og:updated_time" content="2018-12-30T13:12:16.353Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python 装饰器（二）">
-<meta name="twitter:description" content="#Python高级编程之装饰器（二） ##1、理解装饰器装饰器是一个用于封装函数或类的代码的工具，它显式地将封装器应用到函数或类上，从而使它们选择加入到装饰器的功能中。例如：装饰器可以将函数注册到信号系统，或者注册到Web应用程序的注册表中。">
+<meta name="twitter:description" content="Python高级编程之装饰器（二）1、理解装饰器装饰器是一个用于封装函数或类的代码的工具，它显式地将封装器应用到函数或类上，从而使它们选择加入到装饰器的功能中。例如：装饰器可以将函数注册到信号系统，或者注册到Web应用程序的注册表中。">
 
 
 
@@ -314,9 +314,32 @@
       
 
       
-        <p>#Python高级编程之装饰器（二）</p>
-<p>##1、理解装饰器<br>装饰器是一个用于封装函数或类的代码的工具，它显式地将封装器应用到函数或类上，从而使它们选择加入到装饰器的功能中。<br><em>例如：装饰器可以将函数注册到信号系统，或者注册到Web应用程序的注册表中。</em><br><a id="more"></a><br>究其核心而言，装饰器就是一个可以接受调用也可以返回调用的调用，它无非就是一个函数，该函数接受被装饰的函数作为其位置参数。装饰器通过使用该参数来执行某些操作，然后返回原始参数或一些其他的调用。<strong><em>函数在Python中时一级对象，因此它们能够像其他对象一样被传递到另一个函数。装饰器就是接受另一个函数作为参数，并用其完成一些操作的函数。</em></strong></p>
+        <h1 id="Python高级编程之装饰器（二）"><a href="#Python高级编程之装饰器（二）" class="headerlink" title="Python高级编程之装饰器（二）"></a>Python高级编程之装饰器（二）</h1><h2 id="1、理解装饰器"><a href="#1、理解装饰器" class="headerlink" title="1、理解装饰器"></a>1、理解装饰器</h2><p>装饰器是一个用于封装函数或类的代码的工具，它显式地将封装器应用到函数或类上，从而使它们选择加入到装饰器的功能中。<br><em>例如：装饰器可以将函数注册到信号系统，或者注册到Web应用程序的注册表中。</em><br><a id="more"></a><br>究其核心而言，装饰器就是一个可以接受调用也可以返回调用的调用，它无非就是一个函数，该函数接受被装饰的函数作为其位置参数。装饰器通过使用该参数来执行某些操作，然后返回原始参数或一些其他的调用。<strong><em>函数在Python中是一级对象，因此它们能够像其他对象一样被传递到另一个函数。装饰器就是接受另一个函数作为参数，并用其完成一些操作的函数。</em></strong></p>
 <p>持续更新中。。。</p>
+<p>————这几天因为需要备考期末，所以更新的会有点慢————</p>
+<h2 id="2、使用装饰器"><a href="#2、使用装饰器" class="headerlink" title="2、使用装饰器"></a>2、使用装饰器</h2><p>经过前几次的阐述，我们对装饰器的使用应该已经有了初步的认识，接下来我们看下面的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def foo(func):</span><br><span class="line">	def in_foo():</span><br><span class="line">		print(&apos;hello world from in_foo!&apos;)</span><br><span class="line">		func()</span><br><span class="line">	print(&apos;hello world from foo!&apos;)</span><br><span class="line">@foo</span><br><span class="line">def bar():</span><br><span class="line">	print(&apos;hello world from bar!&apos;)</span><br><span class="line">bar()</span><br></pre></td></tr></table></figure>
+<p>乍一看，上面的代码没有问题，可是它是无法运行的。我们来看一下Traceback：</p>
+<pre><code>TypeError: &apos;NoneType&apos; object is not callable
+</code></pre><p>Traceback解释说是类型错误，那我们就来看看bar函数的类型：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def foo(func):</span><br><span class="line">	def in_foo():</span><br><span class="line">		print(&apos;hello world from in_foo!&apos;)</span><br><span class="line">		func()</span><br><span class="line">	print(&apos;hello world from foo!&apos;)</span><br><span class="line">@foo</span><br><span class="line">def bar():</span><br><span class="line">	print(&apos;hello world from bar!&apos;)</span><br><span class="line">print(type(bar))</span><br></pre></td></tr></table></figure>
+<p>运行结果如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hello world from foo!</span><br><span class="line">&lt;class &apos;NoneType&apos;&gt;</span><br></pre></td></tr></table></figure>
+<p>结果表明，使用了装饰器的bar（）函数的类型为”NoneType”。这又是为什么呢？<br>这里需要补充一点，在函数后面没有返回值也就是没有<code>return xxx</code>时，函数会默认返回None，也就是<code>return None</code>。<br>我们再来对foo（）函数做些补充：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">def foo(func):</span><br><span class="line">	def in_foo():</span><br><span class="line">		print(&apos;hello world from in_foo!&apos;)</span><br><span class="line">		func()</span><br><span class="line">	print(&apos;hello world from foo!&apos;)</span><br><span class="line">	return in_foo   #我们在这里返回in_foo函数</span><br><span class="line">@foo</span><br><span class="line">def bar():</span><br><span class="line">	print(&apos;hello world from bar!&apos;)</span><br><span class="line">print(type(bar))</span><br></pre></td></tr></table></figure>
+<p>那么这一次的运行结果呢？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hello world from foo!</span><br><span class="line">&lt;class &apos;function&apos;&gt;</span><br></pre></td></tr></table></figure>
+<p>这一次，bar（）函数的类型变为了’function’，也就是说，现在我们可以调用它了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">def foo(func):</span><br><span class="line">	def in_foo():</span><br><span class="line">		print(&apos;hello world from in_foo!&apos;)</span><br><span class="line">		func()</span><br><span class="line">	print(&apos;hello world from foo!&apos;)</span><br><span class="line">	return in_foo</span><br><span class="line">@foo</span><br><span class="line">def bar():</span><br><span class="line">	print(&apos;hello world from bar!&apos;)</span><br><span class="line">bar()</span><br></pre></td></tr></table></figure>
+<p>运行结果:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hello world from foo!</span><br><span class="line">hello world from in_foo!</span><br><span class="line">hello world from bar!</span><br></pre></td></tr></table></figure>
+<p>成功了！<br>这里做一点补充，也许你会问这个@是什么？<br>这个@叫做“语法糖”，一种简洁的方式来使用装饰器。<br>以上面为例，<code>@foo</code>就等价于<code>bar = foo(bar)</code></p>
+<p>接下来我们分析一下加入了语法糖之后函数的运行过程：</p>
+<p>当Python解释器看到<code>@foo</code>这个语法糖时：</p>
+<p>· 第一步它会调用foo()这个函数，并且使用被装饰的函数bar来作为它的参数，在调用之后，它会返回一个函数对象in_foo<br>也就是：<code>foo(bar) -&gt; in_foo</code></p>
+<p>· 第二步，由bar（）函数来接受in_foo的值<br>也就是：<code>bar = in_foo</code>（可以认为时重新定义了bar（）函数）</p>
+<p>· 第三步，综上所述，在我们调用bar（）函数时，就相当于调用了 in_foo（）函数，那么也就调用了foo（）函数<br>也就是：<code>bar() -&gt; in_foo() -&gt;  foo()</code></p>
+<p>以上，就是Python装饰器遇到语法糖（或者说是装饰器）时所做的事情了。装饰器的讲解也在这里告一段落。<br>如果您有更好的想法，请与我联系！感谢阅读。</p>
 
       
     </div>
@@ -356,6 +379,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/30/遇到的问题/" rel="prev" title="遇到的问题">
+                遇到的问题 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -407,8 +434,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -425,7 +461,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -438,7 +474,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -461,6 +497,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Python高级编程之装饰器（二）"><span class="nav-number">1.</span> <span class="nav-text">Python高级编程之装饰器（二）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、理解装饰器"><span class="nav-number">1.1.</span> <span class="nav-text">1、理解装饰器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、使用装饰器"><span class="nav-number">1.2.</span> <span class="nav-text">2、使用装饰器</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
