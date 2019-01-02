@@ -73,19 +73,19 @@
 
 
 
-<meta name="description" content="Python高级编程之正则（一）1、正则的基本概念相信许多同学在刚接触到正则时与我一样会有一个“为什么使用正则？”的疑问，我用字符串匹配就可以做到，为什么还要学习正则？">
+<meta name="description" content="Python高级编程之正则1、正则的基本概念相信许多同学在刚接触到正则时与我一样会有一个“为什么使用正则？”的疑问，我用字符串匹配就可以做到，为什么还要学习正则？">
 <meta name="keywords" content="Python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python 正则（一）">
+<meta property="og:title" content="Python 正则">
 <meta property="og:url" content="http://yoursite.com/2018/12/31/Python-正则（一）/index.html">
 <meta property="og:site_name" content="Welocome to Vergilben&#39; s blog!">
-<meta property="og:description" content="Python高级编程之正则（一）1、正则的基本概念相信许多同学在刚接触到正则时与我一样会有一个“为什么使用正则？”的疑问，我用字符串匹配就可以做到，为什么还要学习正则？">
+<meta property="og:description" content="Python高级编程之正则1、正则的基本概念相信许多同学在刚接触到正则时与我一样会有一个“为什么使用正则？”的疑问，我用字符串匹配就可以做到，为什么还要学习正则？">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://i.imgur.com/2lzjstZ.png">
-<meta property="og:updated_time" content="2018-12-31T06:38:38.927Z">
+<meta property="og:updated_time" content="2019-01-02T09:26:43.841Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python 正则（一）">
-<meta name="twitter:description" content="Python高级编程之正则（一）1、正则的基本概念相信许多同学在刚接触到正则时与我一样会有一个“为什么使用正则？”的疑问，我用字符串匹配就可以做到，为什么还要学习正则？">
+<meta name="twitter:title" content="Python 正则">
+<meta name="twitter:description" content="Python高级编程之正则1、正则的基本概念相信许多同学在刚接触到正则时与我一样会有一个“为什么使用正则？”的疑问，我用字符串匹配就可以做到，为什么还要学习正则？">
 <meta name="twitter:image" content="https://i.imgur.com/2lzjstZ.png">
 
 
@@ -122,7 +122,7 @@
 
 
 
-  <title>Python 正则（一） | Welocome to Vergilben' s blog!</title>
+  <title>Python 正则 | Welocome to Vergilben' s blog!</title>
   
 
 
@@ -266,7 +266,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Python 正则（一）</h1>
+          <h1 class="post-title" itemprop="name headline">Python 正则</h1>
         
 
         <div class="post-meta">
@@ -316,7 +316,7 @@
       
 
       
-        <h1 id="Python高级编程之正则（一）"><a href="#Python高级编程之正则（一）" class="headerlink" title="Python高级编程之正则（一）"></a>Python高级编程之正则（一）</h1><h2 id="1、正则的基本概念"><a href="#1、正则的基本概念" class="headerlink" title="1、正则的基本概念"></a>1、正则的基本概念</h2><p>相信许多同学在刚接触到正则时与我一样会有一个“为什么使用正则？”的疑问，我用字符串匹配就可以做到，为什么还要学习正则？<br><a id="more"></a><br>接下来用例子解释一下：</p>
+        <h1 id="Python高级编程之正则"><a href="#Python高级编程之正则" class="headerlink" title="Python高级编程之正则"></a>Python高级编程之正则</h1><h2 id="1、正则的基本概念"><a href="#1、正则的基本概念" class="headerlink" title="1、正则的基本概念"></a>1、正则的基本概念</h2><p>相信许多同学在刚接触到正则时与我一样会有一个“为什么使用正则？”的疑问，我用字符串匹配就可以做到，为什么还要学习正则？<br><a id="more"></a><br>接下来用例子解释一下：</p>
 <p><img src="https://i.imgur.com/2lzjstZ.png" alt="所需文件"></p>
 <ol>
 <li>现在你需要在这个文件内找到以Neo开头的语句。</li>
@@ -340,7 +340,132 @@
 </blockquote>
 <p>顺便介绍一下正则表达式的处理过程：<br> 依次拿出表达式和文本中的字符比较-&gt;如果每一个字符都能匹配-&gt;匹配成功，否则失败。</p>
 <p>引入一个例子：你想买手机，现在需要做一个简单的爬虫去爬淘宝上各个手机的价格，型号，购买量甚至处理器，如果一个个地做各个场景的函数，试想一下需要多少天。。。这时候，上正则吧。</p>
-<h2 id="2、正则入门"><a href="#2、正则入门" class="headerlink" title="2、正则入门"></a>2、正则入门</h2><p>学的有点杂，等考试过去了接着更新。</p>
+<p>附上一张正则表达式的构成表：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">字符</th>
+<th style="text-align:center">释义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">普通字符</td>
+<td style="text-align:center">数字、字母</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">转义字符</td>
+<td style="text-align:center">\s</td>
+<td style="text-align:center">匹配任何空白字符</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">\S</td>
+<td style="text-align:center">匹配任何非空白字符</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">\d</td>
+<td style="text-align:center">匹配数字</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">\D</td>
+<td style="text-align:center">匹配任何非数字字符</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">\w</td>
+<td style="text-align:center">匹配字母或数字或下划线或汉字</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">\W</td>
+<td style="text-align:center">匹配任何非字母数字字符</td>
+</tr>
+<tr>
+<td style="text-align:center">通配符</td>
+<td style="text-align:center">.</td>
+<td style="text-align:center">表示除换行符以外的任意字符</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">[]</td>
+<td style="text-align:center">表示一个字符域。[0-9] [a-z A-Z]</td>
+</tr>
+<tr>
+<td style="text-align:center">修饰符(对前面的字符进行修饰)</td>
+<td style="text-align:center">？</td>
+<td style="text-align:center">表示0个或1个前面的字符</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">*</td>
+<td style="text-align:center">表示0个或多个前面的字符</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">.*</td>
+<td style="text-align:center">表示任意字符（贪婪匹配）</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">+</td>
+<td style="text-align:center">表示一个或多个前面的字符</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">{n}</td>
+<td style="text-align:center">表示n个前面的字符</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">{n,}</td>
+<td style="text-align:center">表示n或大于n个前面的字符</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">{n,m}</td>
+<td style="text-align:center">表示n个到m个前面的字符</td>
+</tr>
+<tr>
+<td style="text-align:center">其他</td>
+<td style="text-align:center">^</td>
+<td style="text-align:center">表示以什么开头的行</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">$</td>
+<td style="text-align:center">表示以什么结尾的行</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">一条竖杠（真的打不出来。。）</td>
+<td style="text-align:center">表示‘或’</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">()</td>
+<td style="text-align:center">表示一个字符集</td>
+</tr>
+</tbody>
+</table>
+<h2 id="2、re模块"><a href="#2、re模块" class="headerlink" title="2、re模块"></a>2、re模块</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>re模块提供的主要函数是research。它的目的是接受一个正则表达式和一个字符串，并返回发现的第一个匹配。如果完全没有找到匹配，re.search返回None。</p>
+<blockquote>
+<p>可以通过最简单的正则表达式来考虑re.search的实际使用，也就是搜索一个简单的字母数字字符串。（入门）</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">print(re.search(r&apos;Neo&apos;,&apos;Is Neo the coolest one?&apos;))</span><br></pre></td></tr></table></figure>
+<p>我们来看一下结果：<code>&lt;re.Match object; span=(3, 6), match=&#39;Neo&#39;&gt;</code><br>在此处，正则表达式解析器的工作十分简单。它在字符串中寻找字符串’Neo’，并返回匹配的对象。</p>
+<blockquote>
+<p><strong>注意：</strong> re模块还提供了一个名称为match的函数，该函数看上去类似于search，但它们之间有一个重要的区别：match仅仅搜索从字符串开始的第一个匹配。当你实际想要的是在一个字符串的任何位置找到匹配时，很容易错误地使用re.match。如果你需要这么做，最好总是使用re.search并且使用^锚。（码住后面可能会用到哦）</p>
+</blockquote>
+<blockquote>
+<p>Tips：相信许多读者看到那个r会有点不懂，在这里解释一下：r代表’raw’,在Python解释器中，会将’\’解释为转义字符，在前面加个r就不会这样了。就像最开始地一段代码<code>path = r&#39;C:\Users\wangx\Desktop\Neo.txt&#39;</code>，如果不加那个r，是无法运行的哦。（在Linux中文档路径用的是/哦）。</p>
+</blockquote>
+<h3 id="match对象"><a href="#match对象" class="headerlink" title="match对象"></a>match对象</h3><p>match对象有多种用于获取关于匹配信息的方法。group方法无可争议是最重要的。它返回一个包含匹配文本的字符串：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">match = re.search(r&apos;Neo&apos;,&apos;Is Neo the coolest one?&apos;)</span><br><span class="line">print(match.group())</span><br></pre></td></tr></table></figure></p>
+<p>运行结果：<code>Neo</code></p>
 
       
     </div>
@@ -462,7 +587,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -475,7 +600,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -508,7 +633,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Python高级编程之正则（一）"><span class="nav-number">1.</span> <span class="nav-text">Python高级编程之正则（一）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、正则的基本概念"><span class="nav-number">1.1.</span> <span class="nav-text">1、正则的基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、正则入门"><span class="nav-number">1.2.</span> <span class="nav-text">2、正则入门</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Python高级编程之正则"><span class="nav-number">1.</span> <span class="nav-text">Python高级编程之正则</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、正则的基本概念"><span class="nav-number">1.1.</span> <span class="nav-text">1、正则的基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、re模块"><span class="nav-number">1.2.</span> <span class="nav-text">2、re模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简介"><span class="nav-number">1.2.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#match对象"><span class="nav-number">1.2.2.</span> <span class="nav-text">match对象</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -528,7 +653,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
