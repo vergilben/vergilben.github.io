@@ -77,12 +77,12 @@
 <meta name="keywords" content="Python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python 正则">
-<meta property="og:url" content="http://yoursite.com/2018/12/31/Python-正则/index.html">
-<meta property="og:site_name" content="Welocome to Vergilben&#39; s blog!">
+<meta property="og:url" content="http://yoursite.com/2019/01/06/Python-正则/index.html">
+<meta property="og:site_name" content="Blog">
 <meta property="og:description" content="Python高级编程之正则1、正则的基本概念相信许多同学在刚接触到正则时与我一样会有一个“为什么使用正则？”的疑问，我用字符串匹配就可以做到，为什么还要学习正则？">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://i.imgur.com/2lzjstZ.png">
-<meta property="og:updated_time" content="2019-01-02T11:38:28.384Z">
+<meta property="og:updated_time" content="2019-01-06T09:47:29.190Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python 正则">
 <meta name="twitter:description" content="Python高级编程之正则1、正则的基本概念相信许多同学在刚接触到正则时与我一样会有一个“为什么使用正则？”的疑问，我用字符串匹配就可以做到，为什么还要学习正则？">
@@ -116,13 +116,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/12/31/Python-正则/">
+  <link rel="canonical" href="http://yoursite.com/2019/01/06/Python-正则/">
 
 
 
 
 
-  <title>Python 正则 | Welocome to Vergilben' s blog!</title>
+  <title>Python 正则 | Blog</title>
   
 
 
@@ -152,12 +152,12 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Welocome to Vergilben' s blog!</span>
+        <span class="site-title">Blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
       
-        <p class="site-subtitle">Just be free</p>
+        <p class="site-subtitle">我们都是菜鸟，但我们是有理想的菜鸟</p>
       
   </div>
 
@@ -249,7 +249,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/31/Python-正则/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/06/Python-正则/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Vergilben">
@@ -258,7 +258,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Welocome to Vergilben' s blog!">
+      <meta itemprop="name" content="Blog">
     </span>
 
     
@@ -278,8 +278,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-31T13:41:29+08:00">
-                2018-12-31
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-06T13:41:29+08:00">
+                2019-01-06
               </time>
             
 
@@ -340,8 +340,42 @@
 </blockquote>
 <p>顺便介绍一下正则表达式的处理过程：<br> 依次拿出表达式和文本中的字符比较-&gt;如果每一个字符都能匹配-&gt;匹配成功，否则失败。</p>
 <p>引入一个例子：你想买手机，现在需要做一个简单的爬虫去爬淘宝上各个手机的价格，型号，购买量甚至处理器，如果一个个地做各个场景的函数，试想一下需要多少天。。。这时候，上正则吧。</p>
-<p>附上一张正则表达式的构成表：</p>
-<table>
+<h2 id="2、re模块"><a href="#2、re模块" class="headerlink" title="2、re模块"></a>2、re模块</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>re模块提供的主要函数是research。它的目的是接受一个正则表达式和一个字符串，并返回发现的第一个匹配。如果完全没有找到匹配，re.search返回None。</p>
+<blockquote>
+<p>可以通过最简单的正则表达式来考虑re.search的实际使用，也就是搜索一个简单的字母数字字符串。（入门）</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">print(re.search(r&apos;Neo&apos;,&apos;Is Neo the coolest one?&apos;))</span><br></pre></td></tr></table></figure>
+<p>我们来看一下结果：<code>&lt;re.Match object; span=(3, 6), match=&#39;Neo&#39;&gt;</code><br>在此处，正则表达式解析器的工作十分简单。它在字符串中寻找字符串’Neo’，并返回匹配的对象。</p>
+<blockquote>
+<p><strong>注意：</strong> re模块还提供了一个名称为match的函数，该函数看上去类似于search，但它们之间有一个重要的区别：match仅仅搜索从字符串开始的第一个匹配。当你实际想要的是在一个字符串的任何位置找到匹配时，很容易错误地使用re.match。如果你需要这么做，最好总是使用re.search并且使用^锚。（码住后面可能会用到哦）</p>
+</blockquote>
+<blockquote>
+<p>Tips：相信许多读者看到那个r会有点不懂，在这里解释一下：r代表’raw’,在Python解释器中，会将’\’解释为转义字符，在前面加个r就不会这样了。就像最开始地一段代码<code>path = r&#39;C:\Users\wangx\Desktop\Neo.txt&#39;</code>，如果不加那个r，是无法运行的哦。（在Linux中文档路径用的是/哦）。</p>
+</blockquote>
+<h3 id="match对象"><a href="#match对象" class="headerlink" title="match对象"></a>match对象</h3><p>match对象有多种用于获取关于匹配信息的方法。group方法无可争议是最重要的。它返回一个包含匹配文本的字符串：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">match = re.search(r&apos;Neo&apos;,&apos;Is Neo the coolest one?&apos;)</span><br><span class="line">print(match.group())</span><br></pre></td></tr></table></figure></p>
+<p>运行结果：<code>Neo</code></p>
+<p>这里补充一点：</p>
+<blockquote>
+<p>re.search有一个限制条件，它仅仅会返回最近一个以match对象形式的匹配。如果在一个内存内存在多个匹配，re.search只会返回第一个。在需要多个匹配时需要注意这一点！</p>
+</blockquote>
+<blockquote>
+<p>re模块提供了两个函数，findall和finditer。这两个方法都返回所有非重叠匹配（包括空匹配）。而区别在于：re.findall返回一个列表，re.finditer返回一个生成器。<strong>注意：</strong>它们并没有返回一个match对象，它们仅根据正则表达式的内容以字符串或元组的形式返回匹配自身。</p>
+</blockquote>
+<p>下面是一个findall的例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">print(re.findall(r&apos;e&apos;,&apos;OMG,Neo is the coolest,right?Oh god,why Neo so cool!&apos;))</span><br></pre></td></tr></table></figure></p>
+<p>来看一下运行结果：<br><code>[&#39;e&#39;, &#39;e&#39;, &#39;e&#39;, &#39;e&#39;]</code><br>它返回了带有四个’e’的列表。</p>
+<h2 id="3、基本正则表达式"><a href="#3、基本正则表达式" class="headerlink" title="3、基本正则表达式"></a>3、基本正则表达式</h2><h3 id="字符组"><a href="#字符组" class="headerlink" title="字符组"></a>字符组</h3><p>通俗一点，通过字符组，你可以使用方括号，在方括号内列出所有想要的字符来表示一个字符组。<br>例如，考虑一个与Neo和neo匹配的正则表达式：[Nn]eo<br>看一下下面的正则表达式（正好在这里展示一下上面说过的search方法）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">print(re.search(r&apos;[Nn]eo&apos;,&apos;OMG,Neo is the coolest,right?Oh god,why neo so cool!&apos;))</span><br><span class="line">#search匹配到第一个对象时就停止了哦</span><br></pre></td></tr></table></figure></p>
+<p>结果：<code>&lt;re.Match object; span=(4, 7), match=&#39;Neo&#39;&gt;</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">print(re.findall(r&apos;[Nn]eo&apos;,&apos;OMG,Neo is the coolest,right?Oh god,why neo so cool!&apos;))</span><br></pre></td></tr></table></figure>
+<p>结果：<code>[&#39;Neo&#39;, &#39;neo&#39;]</code></p>
+<p><strong>注意：</strong>不仅仅只是可以第一个字母不同：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">print(re.findall(r&apos;Ne[Oo]&apos;,&apos;OMG,Neo is the coolest,right?Oh god,why NeO so cool!&apos;))</span><br></pre></td></tr></table></figure>
+<p>结果：<code>[&#39;Neo&#39;, &#39;NeO&#39;]</code></p>
+<p><strong>二次注意：</strong>这种字符组仅匹配<strong>一个</strong>字符：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">print(re.findall(r&apos;N[Ee]o&apos;,&apos;OMG,NEeo is the coolest,right?&apos;))</span><br></pre></td></tr></table></figure></p>
+<p>结果：<code>[]</code><br>也就是说，匹配到N后，接下来匹配E或e，接下来匹配o，但是，字符串中E接下来时e而不是o。</p>
+<h4 id="区间"><a href="#区间" class="headerlink" title="区间"></a>区间</h4><p>为什么要在正则表达式中使用区间呢？<br>一些字符组非常大，比如，若匹配数字，使用[0123456789]使代码繁杂，若有大小写字母则。。。<br>正则表达式在字符组中使用 ‘-‘ 来代表区间，因此，匹配任意数字的字符组可以写为：<code>[0-9]</code>，匹配大写字母：<code>[A-Z]</code>，同时匹配大小写字母：<code>[A-Za-z]</code><br><strong>注意：</strong>当你想匹配连字符时，可以在连字符前面加上一个转义字符，比如：<code>[A-Za-z0-9\-]</code>。</p>
+<h4 id="取反"><a href="#取反" class="headerlink" title="取反"></a>取反</h4><p>通俗的来说取反，当你在字符组中使用了表示取反的符号’^’，这意味着它会匹配任何指定字符之外的其他字符。比如’[^a-z]’则会匹配除了a-z之外的任何字符。<br>再比如：’N[^o]’，它表示，匹配到N后，N接下来的字符可以是除了o之外的所有字符<br>但是正则表达式无法匹配处于字符串末尾的字符：<br>比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">print(re.findall(r&apos;o[^e]&apos;,&apos;Neo&apos;))</span><br></pre></td></tr></table></figure></p>
+<p>结果：<code>[]</code></p>
+<h4 id="快捷方式"><a href="#快捷方式" class="headerlink" title="快捷方式"></a>快捷方式</h4><table>
 <thead>
 <tr>
 <th style="text-align:center"></th>
@@ -442,31 +476,27 @@
 </tr>
 <tr>
 <td style="text-align:center"></td>
-<td style="text-align:center">一条竖杠（真的打不出来。。）</td>
-<td style="text-align:center">表示‘或’</td>
-</tr>
-<tr>
-<td style="text-align:center"></td>
 <td style="text-align:center">()</td>
 <td style="text-align:center">表示一个字符集</td>
 </tr>
 </tbody>
 </table>
-<h2 id="2、re模块"><a href="#2、re模块" class="headerlink" title="2、re模块"></a>2、re模块</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>re模块提供的主要函数是research。它的目的是接受一个正则表达式和一个字符串，并返回发现的第一个匹配。如果完全没有找到匹配，re.search返回None。</p>
-<blockquote>
-<p>可以通过最简单的正则表达式来考虑re.search的实际使用，也就是搜索一个简单的字母数字字符串。（入门）</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">print(re.search(r&apos;Neo&apos;,&apos;Is Neo the coolest one?&apos;))</span><br></pre></td></tr></table></figure>
-<p>我们来看一下结果：<code>&lt;re.Match object; span=(3, 6), match=&#39;Neo&#39;&gt;</code><br>在此处，正则表达式解析器的工作十分简单。它在字符串中寻找字符串’Neo’，并返回匹配的对象。</p>
-<blockquote>
-<p><strong>注意：</strong> re模块还提供了一个名称为match的函数，该函数看上去类似于search，但它们之间有一个重要的区别：match仅仅搜索从字符串开始的第一个匹配。当你实际想要的是在一个字符串的任何位置找到匹配时，很容易错误地使用re.match。如果你需要这么做，最好总是使用re.search并且使用^锚。（码住后面可能会用到哦）</p>
-</blockquote>
-<blockquote>
-<p>Tips：相信许多读者看到那个r会有点不懂，在这里解释一下：r代表’raw’,在Python解释器中，会将’\’解释为转义字符，在前面加个r就不会这样了。就像最开始地一段代码<code>path = r&#39;C:\Users\wangx\Desktop\Neo.txt&#39;</code>，如果不加那个r，是无法运行的哦。（在Linux中文档路径用的是/哦）。</p>
-</blockquote>
-<h3 id="match对象"><a href="#match对象" class="headerlink" title="match对象"></a>match对象</h3><p>match对象有多种用于获取关于匹配信息的方法。group方法无可争议是最重要的。它返回一个包含匹配文本的字符串：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">match = re.search(r&apos;Neo&apos;,&apos;Is Neo the coolest one?&apos;)</span><br><span class="line">print(match.group())</span><br></pre></td></tr></table></figure></p>
-<p>运行结果：<code>Neo</code></p>
-<p>————————正则真的好难码出来。。。我要修炼一段时间再写，还有烦人的期末考试。。。————————等过去了就接着码吧</p>
+<p>由一名热心学长向我提供了一个地址，那里相对较全面一点：<a href="https://blog.csdn.net/weixin_40907382/article/details/79654372" target="_blank" rel="noopener">https://blog.csdn.net/weixin_40907382/article/details/79654372</a></p>
+<p>举个例子：\b被称为词边界字符快捷方式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">print(re.search(r&apos;\bNeo\b&apos;,&apos;Neo&apos;))</span><br></pre></td></tr></table></figure></p>
+<p>结果：<code>&lt;re.Match object; span=(0, 3), match=&#39;Neo&#39;&gt;</code></p>
+<p>再来看一个：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">print(re.search(r&apos;\bNeo\b&apos;,&apos;Neoo&apos;))#这里的Neo变成了Neoo</span><br></pre></td></tr></table></figure></p>
+<p>结果：<code>None</code></p>
+<p>现在对快捷方式有一定的认识了吧<br><strong>注意：</strong>还有取反快捷方式哦，就像上面那张不太完整的表里一样。<br>在这里演示一下\b的取反快捷方式\B：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">print(re.search(r&apos;Neo\B&apos;,&apos;Neo&apos;))</span><br></pre></td></tr></table></figure></p>
+<p>结果：<code>None</code> 惊不惊喜，意不意外？<br>接着看：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">print(re.search(r&apos;Neo\B&apos;,&apos;Neoo&apos;))</span><br></pre></td></tr></table></figure></p>
+<p>结果：<code>&lt;re.Match object; span=(0, 3), match=&#39;Neo&#39;&gt;</code></p>
+<p>原来，\b匹配在单词开始时或结束位置长度为0的字符串，而\B匹配不在单词开始或结束位置长度为0的字符串，其实就是相反的意思，大家不妨多尝试几次，会加深印象。</p>
+<h4 id="字符串的开始与结束"><a href="#字符串的开始与结束" class="headerlink" title="字符串的开始与结束"></a>字符串的开始与结束</h4><p>注意这一点不要与上面的取反搞混了：^表示的是字符串的开始，例如：`r’^Neo’，区间取反是写在方括号外面，注意别搞混。<br>而关于^作为字符串开始，还需要注意一点：^字符需要正则表达式与字符串开始部分匹配，用代码解释一下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">print(re.search(r&apos;^Neo&apos;,&apos;who is Neo?&apos;))</span><br></pre></td></tr></table></figure></p>
+<p>结果是：<code>None</code><br>再来看一个：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">print(re.search(r&apos;^Neo&apos;,&apos;Neo is cool&apos;))</span><br></pre></td></tr></table></figure></p>
+<p>结果：<code>&lt;re.Match object; span=(0, 3), match=&#39;Neo&#39;&gt;</code></p>
+<p>不妨在阅读的同时自己亲自体验打下代码尝试哦。</p>
+<p>在字符串中表示结束（与^类似）：$<br>例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">print(re.search(r&apos;Neo$&apos;,&apos;who is Neo&apos;))</span><br></pre></td></tr></table></figure></p>
+<p>结果：<code>&lt;re.Match object; span=(7, 10), match=&#39;Neo&#39;&gt;</code><br>而这样就行不通了（与上面的差不多，举一反三一下）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">print(re.search(r&apos;Neo$&apos;,&apos;Neo is cool&apos;))</span><br></pre></td></tr></table></figure></p>
+<p>结果：<code>None</code></p>
 
       
     </div>
@@ -497,8 +527,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/30/遇到的问题/" rel="next" title="遇到的问题">
-                <i class="fa fa-chevron-left"></i> 遇到的问题
+              <a href="/2019/01/05/Python中的基础易错/" rel="next" title="Python中的基础易错">
+                <i class="fa fa-chevron-left"></i> Python中的基础易错
               </a>
             
           </div>
@@ -506,10 +536,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/01/01/运维基础/" rel="prev" title="运维基础">
-                运维基础 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -588,7 +614,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -634,7 +660,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Python高级编程之正则"><span class="nav-number">1.</span> <span class="nav-text">Python高级编程之正则</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、正则的基本概念"><span class="nav-number">1.1.</span> <span class="nav-text">1、正则的基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、re模块"><span class="nav-number">1.2.</span> <span class="nav-text">2、re模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简介"><span class="nav-number">1.2.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#match对象"><span class="nav-number">1.2.2.</span> <span class="nav-text">match对象</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Python高级编程之正则"><span class="nav-number">1.</span> <span class="nav-text">Python高级编程之正则</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、正则的基本概念"><span class="nav-number">1.1.</span> <span class="nav-text">1、正则的基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、re模块"><span class="nav-number">1.2.</span> <span class="nav-text">2、re模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简介"><span class="nav-number">1.2.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#match对象"><span class="nav-number">1.2.2.</span> <span class="nav-text">match对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、基本正则表达式"><span class="nav-number">1.3.</span> <span class="nav-text">3、基本正则表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字符组"><span class="nav-number">1.3.1.</span> <span class="nav-text">字符组</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#区间"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">区间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#取反"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">取反</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#快捷方式"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">快捷方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符串的开始与结束"><span class="nav-number">1.3.1.4.</span> <span class="nav-text">字符串的开始与结束</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -668,7 +694,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">5.3k</span>
+    <span title="Site words total count">6.5k</span>
   
 </div>
 
