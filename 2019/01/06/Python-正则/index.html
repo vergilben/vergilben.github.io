@@ -82,7 +82,7 @@
 <meta property="og:description" content="Python高级编程之正则1、正则的基本概念相信许多同学在刚接触到正则时与我一样会有一个“为什么使用正则？”的疑问，我用字符串匹配就可以做到，为什么还要学习正则？">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://i.imgur.com/2lzjstZ.png">
-<meta property="og:updated_time" content="2019-01-06T10:30:58.208Z">
+<meta property="og:updated_time" content="2019-01-06T11:11:23.297Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python 正则">
 <meta name="twitter:description" content="Python高级编程之正则1、正则的基本概念相信许多同学在刚接触到正则时与我一样会有一个“为什么使用正则？”的疑问，我用字符串匹配就可以做到，为什么还要学习正则？">
@@ -340,6 +340,7 @@
 </blockquote>
 <p>顺便介绍一下正则表达式的处理过程：<br> 依次拿出表达式和文本中的字符比较-&gt;如果每一个字符都能匹配-&gt;匹配成功，否则失败。</p>
 <p>引入一个例子：你想买手机，现在需要做一个简单的爬虫去爬淘宝上各个手机的价格，型号，购买量甚至处理器，如果一个个地做各个场景的函数，试想一下需要多少天。。。这时候，上正则吧。</p>
+<hr>
 <h2 id="2、re模块"><a href="#2、re模块" class="headerlink" title="2、re模块"></a>2、re模块</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>re模块提供的主要函数是research。它的目的是接受一个正则表达式和一个字符串，并返回发现的第一个匹配。如果完全没有找到匹配，re.search返回None。</p>
 <blockquote>
 <p>可以通过最简单的正则表达式来考虑re.search的实际使用，也就是搜索一个简单的字母数字字符串。（入门）</p>
@@ -363,6 +364,7 @@
 </blockquote>
 <p>下面是一个findall的例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">print(re.findall(r&apos;e&apos;,&apos;OMG,Neo is the coolest,right?Oh god,why Neo so cool!&apos;))</span><br></pre></td></tr></table></figure></p>
 <p>来看一下运行结果：<br><code>[&#39;e&#39;, &#39;e&#39;, &#39;e&#39;, &#39;e&#39;]</code><br>它返回了带有四个’e’的列表。</p>
+<hr>
 <h2 id="3、基本正则表达式"><a href="#3、基本正则表达式" class="headerlink" title="3、基本正则表达式"></a>3、基本正则表达式</h2><h3 id="字符组"><a href="#字符组" class="headerlink" title="字符组"></a>字符组</h3><p>通俗一点，通过字符组，你可以使用方括号，在方括号内列出所有想要的字符来表示一个字符组。<br>例如，考虑一个与Neo和neo匹配的正则表达式：[Nn]eo<br>看一下下面的正则表达式（正好在这里展示一下上面说过的search方法）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">print(re.search(r&apos;[Nn]eo&apos;,&apos;OMG,Neo is the coolest,right?Oh god,why neo so cool!&apos;))</span><br><span class="line">#search匹配到第一个对象时就停止了哦</span><br></pre></td></tr></table></figure></p>
 <p>结果：<code>&lt;re.Match object; span=(4, 7), match=&#39;Neo&#39;&gt;</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">print(re.findall(r&apos;[Nn]eo&apos;,&apos;OMG,Neo is the coolest,right?Oh god,why neo so cool!&apos;))</span><br></pre></td></tr></table></figure>
@@ -497,6 +499,29 @@
 <p>在字符串中表示结束（与^类似）：$<br>例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">print(re.search(r&apos;Neo$&apos;,&apos;who is Neo&apos;))</span><br></pre></td></tr></table></figure></p>
 <p>结果：<code>&lt;re.Match object; span=(7, 10), match=&#39;Neo&#39;&gt;</code><br>而这样就行不通了（与上面的差不多，举一反三一下）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">print(re.search(r&apos;Neo$&apos;,&apos;Neo is cool&apos;))</span><br></pre></td></tr></table></figure></p>
 <p>结果：<code>None</code></p>
+<h4 id="任意字符"><a href="#任意字符" class="headerlink" title="任意字符"></a>任意字符</h4><p>这里主要阐述 ‘.’ 的作用：.字符代表任何单个字符（它仅仅只能出现在方括号字符组以外）</p>
+<p>下面写几个使用’.’的正则表达式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">print(re.search(r&apos;N.o&apos;,&apos;Neo is cool&apos;))</span><br></pre></td></tr></table></figure></p>
+<p>结果：<code>&lt;re.Match object; span=(0, 3), match=&#39;Neo&#39;&gt;</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">print(re.search(r&apos;..o&apos;,&apos;Neo is cool&apos;))</span><br></pre></td></tr></table></figure>
+<p>结果：<code>&lt;re.Match object; span=(0, 3), match=&#39;Neo&#39;&gt;</code></p>
+<p><strong>注意：</strong>.字符有一个无法匹配到的字符——换行符（\n）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">print(re.findall(r&apos;.&apos;,&apos;Neo\n is cool&apos;))</span><br></pre></td></tr></table></figure></p>
+<p>运行结果：<code>[&#39;N&#39;, &#39;e&#39;, &#39;o&#39;, &#39; &#39;, &#39;i&#39;, &#39;s&#39;, &#39; &#39;, &#39;c&#39;, &#39;o&#39;, &#39;o&#39;, &#39;l&#39;]</code> 结果中是没有换行符的</p>
+<p>那要怎么做呢（只列举两种，还有一种传入re.DOTALL或re.S作为re.complie的第二个参数的方法，感兴趣可以去了解了解）:</p>
+<blockquote>
+<p>要<strong>匹配所有字符</strong>，可以使用([\s\S])、([\d\D])……等方法<br>比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">print(re.findall(r&apos;([\s\S])&apos;,&apos;Neo\n is cool&apos;))</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>运行结果：<code>[&#39;N&#39;, &#39;e&#39;, &#39;o&#39;, &#39;\n&#39;, &#39; &#39;, &#39;i&#39;, &#39;s&#39;, &#39; &#39;, &#39;c&#39;, &#39;o&#39;, &#39;o&#39;, &#39;l&#39;]</code></p>
+<blockquote>
+<p>通过  (.|\n)*  正则表达式来匹配所有字符<br>比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">print(re.findall(r&apos;(.|\n)&apos;,&apos;Neo\n is cool&apos;))</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>运行结果：<code>[&#39;N&#39;, &#39;e&#39;, &#39;o&#39;, &#39;\n&#39;, &#39; &#39;, &#39;i&#39;, &#39;s&#39;, &#39; &#39;, &#39;c&#39;, &#39;o&#39;, &#39;o&#39;, &#39;l&#39;]</code>  可以看到换行符出现了</p>
+<h3 id="可选字符"><a href="#可选字符" class="headerlink" title="可选字符"></a>可选字符</h3><p>我们到目前看到的正则表达式，在正则表达式中的字符与被搜索的字符串中的字符保持1：1的关系，但有时，例如单词的拼写方式，color与clour、favor与favour等，要怎么编写正则表达式呢？<br>这时，可以用’?’字符来表示期望该字符出现一次或零次（在你不知道的那个是否出现的字符后面加上?）。例如： <code>(r&#39;colou?r&#39;)</code><br>代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">print(re.findall(r&apos;colou?r&apos;,&apos;U mean color or colour?&apos;))</span><br></pre></td></tr></table></figure></p>
+<p>运行结果：<code>[&#39;color&#39;, &#39;colour&#39;]</code></p>
+<p>再比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">print(re.findall(r&apos;favou?r&apos;,&apos;favor in America and favour in English&apos;))</span><br></pre></td></tr></table></figure></p>
+<p>运行结果：<code>[&#39;favor&#39;, &#39;favour&#39;]</code></p>
+<h3 id="重复"><a href="#重复" class="headerlink" title="重复"></a>重复</h3><p>我们之前所编写的正则表达式仅仅是出现了一次的字符或者字符组或者可选的字符组，那如果我们需要同样的字符或者字符组重复出现呢？<br>这时我们可以用{N}指定一个标记必须重复给定次数，N与标记应该重复的次数对应。<br>我们先看一个简单的例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">print(re.search(r&apos;[\d]&#123;3&#125;-[\d]&#123;3&#125;&apos;,&apos;123-456 is my phone number&apos;))</span><br></pre></td></tr></table></figure></p>
+<p>运行结果：<code>&lt;re.Match object; span=(0, 7), match=&#39;123-456&#39;&gt;</code></p>
+<p>注意这里的’-‘仅仅是与字面连字符匹配，并没有什么特殊含义。</p>
 
       
     </div>
@@ -660,7 +685,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Python高级编程之正则"><span class="nav-number">1.</span> <span class="nav-text">Python高级编程之正则</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、正则的基本概念"><span class="nav-number">1.1.</span> <span class="nav-text">1、正则的基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、re模块"><span class="nav-number">1.2.</span> <span class="nav-text">2、re模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简介"><span class="nav-number">1.2.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#match对象"><span class="nav-number">1.2.2.</span> <span class="nav-text">match对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、基本正则表达式"><span class="nav-number">1.3.</span> <span class="nav-text">3、基本正则表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字符组"><span class="nav-number">1.3.1.</span> <span class="nav-text">字符组</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#区间"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">区间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#取反"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">取反</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#快捷方式"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">快捷方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符串的开始与结束"><span class="nav-number">1.3.1.4.</span> <span class="nav-text">字符串的开始与结束</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Python高级编程之正则"><span class="nav-number">1.</span> <span class="nav-text">Python高级编程之正则</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、正则的基本概念"><span class="nav-number">1.1.</span> <span class="nav-text">1、正则的基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、re模块"><span class="nav-number">1.2.</span> <span class="nav-text">2、re模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简介"><span class="nav-number">1.2.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#match对象"><span class="nav-number">1.2.2.</span> <span class="nav-text">match对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、基本正则表达式"><span class="nav-number">1.3.</span> <span class="nav-text">3、基本正则表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字符组"><span class="nav-number">1.3.1.</span> <span class="nav-text">字符组</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#区间"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">区间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#取反"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">取反</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#快捷方式"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">快捷方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符串的开始与结束"><span class="nav-number">1.3.1.4.</span> <span class="nav-text">字符串的开始与结束</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#任意字符"><span class="nav-number">1.3.1.5.</span> <span class="nav-text">任意字符</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可选字符"><span class="nav-number">1.3.2.</span> <span class="nav-text">可选字符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重复"><span class="nav-number">1.3.3.</span> <span class="nav-text">重复</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -694,7 +719,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">6.5k</span>
+    <span title="Site words total count">7.1k</span>
   
 </div>
 
