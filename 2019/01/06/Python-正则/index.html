@@ -82,7 +82,7 @@
 <meta property="og:description" content="Python高级编程之正则1、正则的基本概念相信许多同学在刚接触到正则时与我一样会有一个“为什么使用正则？”的疑问，我用字符串匹配就可以做到，为什么还要学习正则？">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://i.imgur.com/2lzjstZ.png">
-<meta property="og:updated_time" content="2019-01-06T11:15:40.485Z">
+<meta property="og:updated_time" content="2019-01-07T08:28:37.953Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python 正则">
 <meta name="twitter:description" content="Python高级编程之正则1、正则的基本概念相信许多同学在刚接触到正则时与我一样会有一个“为什么使用正则？”的疑问，我用字符串匹配就可以做到，为什么还要学习正则？">
@@ -524,6 +524,9 @@
 <h3 id="重复"><a href="#重复" class="headerlink" title="重复"></a>重复</h3><p>我们之前所编写的正则表达式仅仅是出现了一次的字符或者字符组或者可选的字符组，那如果我们需要同样的字符或者字符组重复出现呢？<br>这时我们可以用{N}指定一个标记必须重复给定次数，N与标记应该重复的次数对应。<br>我们先看一个简单的例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">print(re.search(r&apos;[\d]&#123;3&#125;-[\d]&#123;3&#125;&apos;,&apos;123-456 is my phone number&apos;))</span><br></pre></td></tr></table></figure></p>
 <p>运行结果：<code>&lt;re.Match object; span=(0, 7), match=&#39;123-456&#39;&gt;</code></p>
 <p>注意这里的’-‘仅仅是与字面连字符匹配，并没有什么特殊含义。</p>
+<h4 id="重复区间"><a href="#重复区间" class="headerlink" title="重复区间"></a>重复区间</h4><p>重复区间的概念，简单引入就是你不确定重复的次数，比如有人的qq号是9位，10位或者11为，这里的语法是： <code>{M,N}</code>，M是上界，N是下界。<br>如果你希望匹配9位数的qq号或者10位数的qq号：[\d]{9,10}，这种正则表达式是包含性的，与列表中的不同。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">print(re.findall(r&apos;[\d]&#123;9,10&#125;&apos;,&apos;my qq is 123456789 and his qq is 1234567890&apos;))</span><br></pre></td></tr></table></figure>
+<p>结果：<code>[&#39;123456789&#39;, &#39;1234567890&#39;]</code></p>
 
       
     </div>
@@ -687,7 +690,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Python高级编程之正则"><span class="nav-number">1.</span> <span class="nav-text">Python高级编程之正则</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、正则的基本概念"><span class="nav-number">1.1.</span> <span class="nav-text">1、正则的基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、re模块"><span class="nav-number">1.2.</span> <span class="nav-text">2、re模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简介"><span class="nav-number">1.2.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#match对象"><span class="nav-number">1.2.2.</span> <span class="nav-text">match对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、基本正则表达式"><span class="nav-number">1.3.</span> <span class="nav-text">3、基本正则表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字符组"><span class="nav-number">1.3.1.</span> <span class="nav-text">字符组</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#区间"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">区间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#取反"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">取反</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#快捷方式"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">快捷方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符串的开始与结束"><span class="nav-number">1.3.1.4.</span> <span class="nav-text">字符串的开始与结束</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#任意字符"><span class="nav-number">1.3.1.5.</span> <span class="nav-text">任意字符</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可选字符"><span class="nav-number">1.3.2.</span> <span class="nav-text">可选字符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重复"><span class="nav-number">1.3.3.</span> <span class="nav-text">重复</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Python高级编程之正则"><span class="nav-number">1.</span> <span class="nav-text">Python高级编程之正则</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、正则的基本概念"><span class="nav-number">1.1.</span> <span class="nav-text">1、正则的基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、re模块"><span class="nav-number">1.2.</span> <span class="nav-text">2、re模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简介"><span class="nav-number">1.2.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#match对象"><span class="nav-number">1.2.2.</span> <span class="nav-text">match对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、基本正则表达式"><span class="nav-number">1.3.</span> <span class="nav-text">3、基本正则表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字符组"><span class="nav-number">1.3.1.</span> <span class="nav-text">字符组</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#区间"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">区间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#取反"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">取反</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#快捷方式"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">快捷方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符串的开始与结束"><span class="nav-number">1.3.1.4.</span> <span class="nav-text">字符串的开始与结束</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#任意字符"><span class="nav-number">1.3.1.5.</span> <span class="nav-text">任意字符</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可选字符"><span class="nav-number">1.3.2.</span> <span class="nav-text">可选字符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重复"><span class="nav-number">1.3.3.</span> <span class="nav-text">重复</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#重复区间"><span class="nav-number">1.3.3.1.</span> <span class="nav-text">重复区间</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -721,7 +724,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">7.1k</span>
+    <span title="Site words total count">7.3k</span>
   
 </div>
 
