@@ -81,12 +81,23 @@
 <meta property="og:site_name" content="Blog">
 <meta property="og:description" content="缓冲区溢出 简介：缓冲区溢出是指当计算机向缓冲区内填充数据时超过了缓冲区本身的容量，溢出的数据覆盖在合法数据上。理想的情况是：程序检查数据长度并不    允许输入超过缓冲区长度的字符，但是绝大多数程序都会假设数据长度总是与所分配的储存空间相匹配，这就为缓冲区溢出埋下了隐患。    操作系统所使用的缓冲区，又被称为”堆栈”。在各个操作进程之间，指令会被临时储存在“堆栈”中，“堆栈”也会出现缓冲区溢出">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://i.imgur.com/PCieRwW.png">
-<meta property="og:updated_time" content="2019-03-07T02:19:10.121Z">
+<meta property="og:image" content="https://i.imgur.com/6ZjBtLx.png">
+<meta property="og:image" content="https://i.imgur.com/pq5iAK2.png">
+<meta property="og:image" content="https://i.imgur.com/u0RGTK8.png">
+<meta property="og:image" content="https://i.imgur.com/mjoy2qs.png">
+<meta property="og:image" content="https://i.imgur.com/WiBEUC4.png">
+<meta property="og:image" content="https://i.imgur.com/bStGIuw.png">
+<meta property="og:image" content="https://i.imgur.com/PpCWz7S.png">
+<meta property="og:image" content="https://i.imgur.com/r059V08.png">
+<meta property="og:image" content="https://i.imgur.com/qk7RuSO.png">
+<meta property="og:image" content="https://i.imgur.com/mFUuhuN.png">
+<meta property="og:image" content="https://i.imgur.com/WH09ubg.png">
+<meta property="og:image" content="https://i.imgur.com/1quQEiD.png">
+<meta property="og:updated_time" content="2019-03-07T13:21:33.061Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="缓冲区溢出漏洞">
 <meta name="twitter:description" content="缓冲区溢出 简介：缓冲区溢出是指当计算机向缓冲区内填充数据时超过了缓冲区本身的容量，溢出的数据覆盖在合法数据上。理想的情况是：程序检查数据长度并不    允许输入超过缓冲区长度的字符，但是绝大多数程序都会假设数据长度总是与所分配的储存空间相匹配，这就为缓冲区溢出埋下了隐患。    操作系统所使用的缓冲区，又被称为”堆栈”。在各个操作进程之间，指令会被临时储存在“堆栈”中，“堆栈”也会出现缓冲区溢出">
-<meta name="twitter:image" content="https://i.imgur.com/PCieRwW.png">
+<meta name="twitter:image" content="https://i.imgur.com/6ZjBtLx.png">
 
 
 
@@ -294,7 +305,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-03-07T10:19:10+08:00">
+              <time title="Post modified" itemprop="dateModified" datetime="2019-03-07T21:21:33+08:00">
                 2019-03-07
               </time>
             
@@ -338,14 +349,38 @@
 <p>  Metasploit是一款开源的安全漏洞检测工具，可以帮助安全和IT专业人士识别安全性问题，验证漏洞的缓解措施，并对安全性进行评估，提供真正的安全风险情报。这些功能包括智能开发，密码审计，Web应用程序扫描，社会工程等。<br>    Metasploit是一个攻击工具开发平台，可以扩展的模型将负载控制，编码器，无操作生成器和漏洞整合在一起，使 Metasploit Framework 成为一种研究高危漏洞的途径。它集成了各平台上常见的溢出漏洞和流行的 shellcode ，并且不断更新。最新版本的 MSF 包含了750多种流行的操作系统及应用软件的漏洞，以及224个 shellcode 。作为安全工具，它在安全检测中用着不容忽视的作用，并为漏洞自动化探测和及时检测系统漏洞提供了有力保障。</p>
 </blockquote>
 <p><strong>信息来源——合天网安实验室</strong></p>
-<p>接下来开始复现，使用合天网安所提供的实验环境。</p>
+<p>接下来开始复现，使用合天网安所提供的实验环境。靶机ip地址为：10.1.1.2</p>
 <ol>
 <li>进入实验环境，查看并测试环境所提供的buffer.c程序，其中buffer.c的源代码如下：<br> /<em>buffer.c</em>/<br> #include &lt;stdio.h&gt;<br> int main()<br>  {<br> char name[8];<br> printf(“Please input your name: ”);<br> gets(name);<br> printf(“your name is : %s!”, name);<br> return 0;<br>   }<blockquote>
-<p>引起缓冲区溢出的代码。<br><img src="https://i.imgur.com/PCieRwW.png" alt=""></p>
+<p>引起缓冲区溢出的代码。</p>
 </blockquote>
 </li>
 </ol>
-<p>测试一下这段代码：</p>
+<p>测试一下这段代码：<br><img src="https://i.imgur.com/6ZjBtLx.png" alt=""></p>
+<ol start="2">
+<li>使用溢出工具获取靶机（10.1.1.2）的shell特权</li>
+</ol>
+<p>在cmd中查看溢出工具 dns.exe并运行dns.exe，查看它的介绍及使用方法，红框中的为比较重要的。<br><img src="https://i.imgur.com/pq5iAK2.png" alt=""></p>
+<p>根据介绍开始尝试使用这个dns.exe工具，扫描靶机<br><img src="https://i.imgur.com/u0RGTK8.png" alt=""></p>
+<p>可以看到1027四个数字后面写着“易受攻击的”，根据dns.exe的介绍，加上我们用dns扫描出来的成果可以使用dns -t来对靶机进行溢出。<br><img src="https://i.imgur.com/mjoy2qs.png" alt=""></p>
+<p>“port”是端口的意思，“bind”是捆绑的意思，大概读一下发现我们可以从1100这个端口进行攻击，接下来开始用telnet连接靶机！</p>
+<p>使用<code>telnet 10.1.1.2 1100</code>命令，进入如下页面<br><img src="https://i.imgur.com/WiBEUC4.png" alt=""></p>
+<p>接下来，我们确认一下我们是否拿到了靶机的shell，使用ipconfig来确定ip地址是否为10.1.1.2<br><img src="https://i.imgur.com/bStGIuw.png" alt=""></p>
+<p>成功了，我们已经通过dns这个溢出工具拿到了靶机的shell！接下来我们利用漏洞使靶机瘫痪！</p>
+<ol start="3">
+<li>使用MS12-020漏洞溢出靶机系统</li>
+</ol>
+<p>我们先启动metasploit console，这里简单介绍一下metasploit：</p>
+<blockquote>
+<p>Metasploit是一款开源的安全漏洞检测工具，可以帮助安全和IT专业人士识别安全性问题，验证漏洞的缓解措施，并管理专家驱动的安全性进行评估，提供真正的安全风险情报。这些功能包括智能开发，代码审计，Web应用程序扫描，社会工程。团队合作，在Metasploit和综合报告提出了他们的发现。——来源：百度百科。这里有metasploit的用法：<a href="https://www.cnblogs.com/panisme/p/8341598.html" target="_blank" rel="noopener">https://www.cnblogs.com/panisme/p/8341598.html</a></p>
+</blockquote>
+<p>成功进入界面如下<br><img src="https://i.imgur.com/PpCWz7S.png" alt=""></p>
+<p>接下来，在msf&gt;下使用<code>db_nmap -sT -p3389 10.1.1.2</code>对靶机进行扫描，简单分析一下得到的信息<br><img src="https://i.imgur.com/r059V08.png" alt=""></p>
+<p>下一步，我们要使用ms12_020漏洞进行攻击，所以我们先搜索一下这个漏洞的利用模块：<code>search ms12_020</code><br><img src="https://i.imgur.com/qk7RuSO.png" alt=""></p>
+<p>简单分析一下，红框下面有个“scanner”，所以它应该不能用来攻击，那我们就试试用红框里的<br>输入<code>use auxiliary/dos/windows/rdp/ms12_020_maxchannelids</code>并设置上参数，即靶机的ip地址，再用<code>show options</code>查看确认<br><img src="https://i.imgur.com/mFUuhuN.png" alt=""></p>
+<p>好的，万事具备，使用exploit命令开始攻击！<br><img src="https://i.imgur.com/WH09ubg.png" alt=""></p>
+<p>攻击完毕，我们在cmd中ping一下靶机的ip地址看看有什么结果。<br>这里说明一下，在合天上正常的显示应该是数据延迟，ping不出来东西，但我在做的时候，exploit攻击完毕后，cmd中会显示与主机断开连接，ping 10.1.1.2却还是正常的，只有数据的接受时间与延迟前后不太一样，我前前后后试了有六七次都是这样，有可能是这个漏洞年代久远，也可能是其它原因，所以，这个漏洞复现并没有完全成功，我会再寻找它的原因的！<br><img src="https://i.imgur.com/1quQEiD.png" alt=""></p>
+<p>总结一下：攻击与防御思路真的很重要，每一步做什么，怎么做都至关重要，跳做一步，少做一步，都有可能使攻击失败，只有脑海中有大概的思路，明确每一步做什么，一步一步走，而且千万要细心，有时候打错一个大小写就要重新来一遍。作为复现。。半成功的第一个漏洞，给自己打个7分吧，1分扣在没有成功，一分扣在中间的失误步骤多，还有一分扣在效率低。继续加油吧！</p>
 
       
     </div>
@@ -543,7 +578,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">13.7k</span>
+    <span title="Site words total count">14.6k</span>
   
 </div>
 
