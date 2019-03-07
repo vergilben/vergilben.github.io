@@ -93,7 +93,7 @@
 <meta property="og:image" content="https://i.imgur.com/mFUuhuN.png">
 <meta property="og:image" content="https://i.imgur.com/WH09ubg.png">
 <meta property="og:image" content="https://i.imgur.com/1quQEiD.png">
-<meta property="og:updated_time" content="2019-03-07T13:24:24.837Z">
+<meta property="og:updated_time" content="2019-03-07T13:28:08.589Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="缓冲区溢出漏洞">
 <meta name="twitter:description" content="缓冲区溢出 简介：缓冲区溢出是指当计算机向缓冲区内填充数据时超过了缓冲区本身的容量，溢出的数据覆盖在合法数据上。理想的情况是：程序检查数据长度并不    允许输入超过缓冲区长度的字符，但是绝大多数程序都会假设数据长度总是与所分配的储存空间相匹配，这就为缓冲区溢出埋下了隐患。    操作系统所使用的缓冲区，又被称为”堆栈”。在各个操作进程之间，指令会被临时储存在“堆栈”中，“堆栈”也会出现缓冲区溢出">
@@ -305,7 +305,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-03-07T21:24:24+08:00">
+              <time title="Post modified" itemprop="dateModified" datetime="2019-03-07T21:28:08+08:00">
                 2019-03-07
               </time>
             
@@ -340,9 +340,8 @@
 
       
         <h1 id="缓冲区溢出"><a href="#缓冲区溢出" class="headerlink" title="缓冲区溢出"></a>缓冲区溢出</h1><blockquote>
-<p>简介：缓冲区溢出是指当计算机向缓冲区内填充数据时超过了缓冲区本身的容量，溢出的数据覆盖在合法数据上。理想的情况是：程序检查数据长度并不<br>    允许输入超过缓冲区长度的字符，但是绝大多数程序都会假设数据长度总是与所分配的储存空间相匹配，这就为缓冲区溢出埋下了隐患。<br>    操作系统所使用的缓冲区，又被称为”堆栈”。在各个操作进程之间，指令会被临时储存在“堆栈”中，“堆栈”也会出现缓冲区溢出。<br>    缓冲区溢出的危害：在当前网络与分布式系统安全中，被广泛利用的50%以上都是缓冲区溢出，其中最著名的例子是1988年利用fingerd漏洞的蠕虫。而缓冲区溢出中，最为危险的是堆栈溢出，因为入侵者可以利用堆栈溢出，在函数返回时改变返回程序的地址，让其跳转到任意地址，带来的危害是：一种情况是程序崩溃导致拒绝服务，另外一种就是跳转并且执行一段恶意代码，比如得到shell，然后为所欲为。</p>
+<p>简介：缓冲区溢出是指当计算机向缓冲区内填充数据时超过了缓冲区本身的容量，溢出的数据覆盖在合法数据上。理想的情况是：程序检查数据长度并不<br>    允许输入超过缓冲区长度的字符，但是绝大多数程序都会假设数据长度总是与所分配的储存空间相匹配，这就为缓冲区溢出埋下了隐患。<br>    操作系统所使用的缓冲区，又被称为”堆栈”。在各个操作进程之间，指令会被临时储存在“堆栈”中，“堆栈”也会出现缓冲区溢出。<br>    缓冲区溢出的危害：在当前网络与分布式系统安全中，被广泛利用的50%以上都是缓冲区溢出，其中最著名的例子是1988年利用fingerd漏洞的蠕虫。而缓冲区溢出中，最为危险的是堆栈溢出，因为入侵者可以利用堆栈溢出，在函数返回时改变返回程序的地址，让其跳转到任意地址，带来的危害是：一种情况是程序崩溃导致拒绝服务，另外一种就是跳转并且执行一段恶意代码，比如得到shell，然后为所欲为。<br><a id="more"></a></p>
 </blockquote>
-<a id="more"></a>
 <h1 id="MS12-020漏洞"><a href="#MS12-020漏洞" class="headerlink" title="MS12-020漏洞"></a>MS12-020漏洞</h1><blockquote>
 <p>  微软于2012年3月12日发布安全公告，公布了MS12-020漏洞，漏洞级别为严重，这个级别是微软所有漏洞级别的最高级别，意即会对服务和企业运营造成巨大损失。<br>    这个漏洞的定义是指操作系统的远程桌面协议存在重大漏洞，入侵者（黑客）可以通过向远程桌面默认端口（3389）发一系列特定RDP包，从而获取超级管理员权限，进而入侵系统。<br>    若该主机同时提供80端口服务，那么疑似有相对更大的隐患。<br>    根据微软的安全公告，Windows全系列操作系统（WinXP/Vista/Win7/Win2000/ Win2003/Win2008）均存在受控威胁。但因为远程桌面管理的特殊性，几乎所发现的主机都是服务器，PC机暂未发生。</p>
 </blockquote>
@@ -361,7 +360,7 @@
 <ol start="2">
 <li>使用溢出工具获取靶机（10.1.1.2）的shell特权</li>
 </ol>
-<p>在cmd中查看溢出工具 dns.exe并运行dns.exe，查看它的介绍及使用方法，红框中的为比较重要的。<br><img src="https://i.imgur.com/pq5iAK2.png" alt=""></p>
+<p>在cmd中查看溢出工具dns.exe并运行dns.exe，查看它的介绍及使用方法，红框中的为比较重要的。<br><img src="https://i.imgur.com/pq5iAK2.png" alt=""></p>
 <p>根据介绍开始尝试使用这个dns.exe工具，扫描靶机<br><img src="https://i.imgur.com/u0RGTK8.png" alt=""></p>
 <p>可以看到1027四个数字后面写着“易受攻击的”，根据dns.exe的介绍，加上我们用dns扫描出来的成果可以使用dns -t来对靶机进行溢出。<br><img src="https://i.imgur.com/mjoy2qs.png" alt=""></p>
 <p>“port”是端口的意思，“bind”是捆绑的意思，大概读一下发现我们可以从1100这个端口进行攻击，接下来开始用telnet连接靶机！</p>
@@ -371,10 +370,7 @@
 <ol start="3">
 <li>使用MS12-020漏洞溢出靶机系统</li>
 </ol>
-<p>我们先启动metasploit console，这里简单介绍一下metasploit：</p>
-<blockquote>
-<p>Metasploit是一款开源的安全漏洞检测工具，可以帮助安全和IT专业人士识别安全性问题，验证漏洞的缓解措施，并管理专家驱动的安全性进行评估，提供真正的安全风险情报。这些功能包括智能开发，代码审计，Web应用程序扫描，社会工程。团队合作，在Metasploit和综合报告提出了他们的发现。——来源：百度百科。这里有metasploit的用法：<a href="https://www.cnblogs.com/panisme/p/8341598.html" target="_blank" rel="noopener">https://www.cnblogs.com/panisme/p/8341598.html</a></p>
-</blockquote>
+<p>我们先启动metasploit console，博客的开始有介绍metasploit，可以再翻回去看一下，这里有metasploit的用法：<a href="https://www.cnblogs.com/panisme/p/8341598.html" target="_blank" rel="noopener">https://www.cnblogs.com/panisme/p/8341598.html</a></p>
 <p>成功进入界面如下<br><img src="https://i.imgur.com/PpCWz7S.png" alt=""></p>
 <p>接下来，在msf&gt;下使用<code>db_nmap -sT -p3389 10.1.1.2</code>对靶机进行扫描，简单分析一下得到的信息<br><img src="https://i.imgur.com/r059V08.png" alt=""></p>
 <p>下一步，我们要使用ms12_020漏洞进行攻击，所以我们先搜索一下这个漏洞的利用模块：<code>search ms12_020</code><br><img src="https://i.imgur.com/qk7RuSO.png" alt=""></p>
@@ -579,7 +575,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">14.6k</span>
+    <span title="Site words total count">14.5k</span>
   
 </div>
 
