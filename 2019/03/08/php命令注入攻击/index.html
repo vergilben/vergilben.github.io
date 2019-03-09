@@ -82,7 +82,6 @@
 <meta property="og:description" content="这次实验内容为了解php命令注入攻击的过程，掌握思路。 命令注入攻击">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://i.imgur.com/ZVTRceU.png">
-<meta property="og:image" content="https://i.imgur.com/Ru3RbJn.png">
 <meta property="og:image" content="https://i.imgur.com/jXEW5Yh.png">
 <meta property="og:image" content="https://i.imgur.com/95KVj9R.png">
 <meta property="og:image" content="https://i.imgur.com/cRXKacx.png">
@@ -95,7 +94,8 @@
 <meta property="og:image" content="https://i.imgur.com/rjsPIFt.png">
 <meta property="og:image" content="https://i.imgur.com/X0rMHO1.png">
 <meta property="og:image" content="https://i.imgur.com/qMpAzjq.png">
-<meta property="og:updated_time" content="2019-03-08T11:46:04.957Z">
+<meta property="og:image" content="https://i.imgur.com/Ru3RbJn.png">
+<meta property="og:updated_time" content="2019-03-09T10:40:31.122Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="php命令注入攻击">
 <meta name="twitter:description" content="这次实验内容为了解php命令注入攻击的过程，掌握思路。 命令注入攻击">
@@ -307,8 +307,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-03-08T19:46:04+08:00">
-                2019-03-08
+              <time title="Post modified" itemprop="dateModified" datetime="2019-03-09T18:40:31+08:00">
+                2019-03-09
               </time>
             
           </span>
@@ -354,13 +354,9 @@
 <p>通过命令执行漏洞，我们可以读写一些服务器上的文件，并且这些文件是不想让用户看到的，比如密码类的敏感文件。而且，我们可以通过命令打开服务器的远程服务，这样就可以拿到服务器的shell，从而操控服务器或者这个网页。再者，我们还可以对内网进行进一步的渗透。</p>
 <p>下面开始实验。</p>
 <ol>
-<li>使远程服务器执行<code>whoami</code>的命令。（whoami命令是查询当前用户身份的命令，比如管理员或普通用户）<br>打开实验环境，如下图所示，我们要使其执行<code>whoami</code>命令。<br><img src="https://i.imgur.com/ZVTRceU.png" alt=""><br>从返回的结果来看服务器应该是windows系统，这里补充一下：<blockquote>
-<p>我们可以通过ping命令返回结果中的TTL项查看服务器的操作系统：LINUX——64  WIN2K/NT——128  WINDOWS系列——32  UNIX系列——255（前面为操作系统，后面为TTL值）  通过ping返回结果，看TTL值与哪项最为接近，服务器就是哪个操作系统。</p>
-</blockquote>
-</li>
+<li>使远程服务器执行<code>whoami</code>的命令。（whoami命令是查询当前用户身份的命令，比如管理员或普通用户）<br>打开实验环境，如下图所示，我们要使其执行<code>whoami</code>命令。<br><img src="https://i.imgur.com/ZVTRceU.png" alt=""><br>从返回的结果来看服务器应该是windows系统，后面有补充。</li>
 </ol>
-<p>我们ping一下百度的试试<br><img src="https://i.imgur.com/Ru3RbJn.png" alt=""><br>TTL值为52，则它与64之间跨了12个路由，所以它的服务器应该是LINUX。</p>
-<p>好了我们继续进行实验，服务器中关键代码如下：<br><img src="https://i.imgur.com/jXEW5Yh.png" alt=""><br>代码大概的意思是传一个ip地址，然后执行ping命令，现在我们要思考如何让它执行<code>whoami</code>。构造url时我们常见两个符号“|”（管道）和“&amp;”（和）。</p>
+<p>服务器中关键代码如下：<br><img src="https://i.imgur.com/jXEW5Yh.png" alt=""><br>程序获取GET参数ip，然后拼接到system（）函数中，利用system（）函数执行ping的功能，但是此处没有对参数ip进行过滤和检测，导致可以利用管道符执行其它的系统命令，后面有管道符的补充。</p>
 <p>“|”在windows中的意思是：把前面的结果当成后面的输入，我们用<code>ip=127.0.0.1|whoami</code>来试一下<br><img src="https://i.imgur.com/95KVj9R.png" alt=""><br>后面的命令执行成功，得到我们的身份是system</p>
 <p>“&amp;”在windows中的意思是：两条命令一起执行，先执行前面再执行后面，我们用<code>ip=127.0.0.1&amp;whoami</code>来试一下<br><img src="https://i.imgur.com/cRXKacx.png" alt=""><br>可以看出<code>whoami</code>命令并没有成功被执行，原因是在ulr中，“&amp;”是一个连接符号，会被转义成“%26”，那我们直接使用“%26”，它就会被转义成真正的“&amp;”，所以我们不妨使用<code>ip=127.0.0.1%26whoami</code>再试一下<br><img src="https://i.imgur.com/aqQ3gOF.png" alt=""><br>命令执行成功，可以看到服务器执行了两个命令（ping和whoami），我们的身份是system</p>
 <p>“||”在windows中的意思是：当前面一个执行失败，则执行后面的，我们用<code>ip=127.0.0.1||whoami</code>来试一下<br><img src="https://i.imgur.com/lluYPuQ.png" alt=""><br>这一次<code>whoami</code>命令并没有被执行，这是因为前面的命令可以执行，我们只要把前面的命令搞成不能执行的，让它自动执行下一条命令，根据前面提供的关键代码，我们知道只要传入了正常的ip地址，命令（ping）就会成功执行，所以我们试试把ip地址消除，用<code>ip=||whoami</code>来试一下<br><img src="https://i.imgur.com/cHOKpHu.png" alt=""><br>命令执行成功，我们的身份是system</p>
@@ -373,7 +369,27 @@
 <p>这段代码对ip地址进行了简单的过滤，如果它匹配到，它会执行下面system那条命令，如果它没有匹配到，它就无法执行下面那条命令（即ping），也就是我们开始时看到的界面：<br><img src="https://i.imgur.com/r69Esb3.png" alt=""><br>所以，我们想要让服务器执行ipconfig，首先想到的思路就是让它发生错误，执行失败，使用双管道让它执行ipconfig，接下来我们用<code>ip=127.||ipconfig</code>试一下：<br><img src="https://i.imgur.com/VrNUyW1.png" alt=""><br>成功</p>
 <p>同理，我们使用单管道（<code>ip=127.0.0.1|ipconfig</code>）试一试：<br><img src="https://i.imgur.com/rjsPIFt.png" alt=""><br>成功</p>
 <p>继续，我们使用“%26”（<code>ip=127.0.0.1%26ipconfig</code>）试一试：<br><img src="https://i.imgur.com/X0rMHO1.png" alt=""><br><img src="https://i.imgur.com/qMpAzjq.png" alt=""><br>执行了两个命令，成功！</p>
-<p>总结一下：这种需要分析代码的问题一定不能大意，需要认真读懂什么意思才能破解它的秘密。这次实验并不是很难，以前在做CTF Web题有遇到过，那种跟这个差不多，通过分析代码构造url获取flag。这次实验给自己打8分，5分打给自己能专心致志的投入，没有分心，相对上次很大的进步；2分打给自己没有放过小细节，不跟以前一样似懂非懂就过了；1分打给自己比上次细心多了。一分扣在效率太低，时间浪费的多；一分扣在知识点薄弱，这一点我需要更努力地去完善！相对来说最近的情况比以前好多了，至少自己能干点什么，继续加油吧~！。。。。。下一次的目标：边学边做提高效率，完善知识！！</p>
+<h1 id="知识补充"><a href="#知识补充" class="headerlink" title="知识补充"></a>知识补充</h1><blockquote>
+<p>我们可以通过ping命令返回结果中的TTL项查看服务器的操作系统：LINUX——64  WIN2K/NT——128  WINDOWS系列——32  UNIX系列——255（前面为操作系统，后面为TTL值）  通过ping返回结果，看TTL值与哪项最为接近，服务器就是哪个操作系统。</p>
+</blockquote>
+<p>我们ping一下百度的试试<br><img src="https://i.imgur.com/Ru3RbJn.png" alt=""><br>TTL值为52，则它与64之间跨了12个路由，所以它的服务器应该是LINUX。</p>
+<p>接下来补充一些常用的管道符：</p>
+<p>Windows系统支持的管道符如下：</p>
+<ul>
+<li>“|”：直接执行后面的语句。</li>
+<li>“||”：如果前面的语句执行失败，则执行后面的语句，前面的语句只能为假才行。</li>
+<li>“&amp;”：两条命令都执行，如果前面的语句为假则直接执行后面的语句，前面的语句可真可假。</li>
+<li>“&amp;&amp;”：如果前面的语句为假则直接出错，也不执行后面的语句，前面的语句为真则两条命令都执行，前面的语句只能为真。</li>
+</ul>
+<p>Linux系统支持的管道符如下：</p>
+<ul>
+<li>“;”：执行完前面的语句再执行后面的语句。</li>
+<li>“|”：显示后面语句的执行结果。</li>
+<li>“||”：当前面的语句执行出错时，执行后面的语句。</li>
+<li>“&amp;”：两条命令都执行，如果前面的语句为假则执行执行后面的语句，前面的语句可真可假。</li>
+<li>“&amp;&amp;”：如果前面的语句为假则直接出错，也不执行后面的语句，前面的语句为真则两条命令都执行，前面的语句只能为真。</li>
+</ul>
+<p>总结一下：这种需要分析代码的问题一定不能大意，需要认真读懂什么意思才能破解它的秘密。这次实验并不是很难，以前在做CTF——Web题有遇到过，那种跟这个差不多，通过分析代码构造url获取flag。这次实验给自己打8分，5分打给自己能专心致志的投入，没有分心，相对上次很大的进步；2分打给自己没有放过小细节，不跟以前一样似懂非懂就过了；1分打给自己比上次细心多了。一分扣在效率太低，时间浪费的多；一分扣在知识点薄弱，这一点我需要更努力地去完善！相对来说最近的情况比以前好多了，至少自己能干点什么，继续加油吧~！。。。。。下一次的目标：边学边做提高效率，完善知识！！</p>
 
       
     </div>
@@ -537,7 +553,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#命令注入攻击"><span class="nav-number">1.</span> <span class="nav-text">命令注入攻击</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#命令注入攻击"><span class="nav-number">1.</span> <span class="nav-text">命令注入攻击</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#知识补充"><span class="nav-number">2.</span> <span class="nav-text">知识补充</span></a></li></ol></div>
             
 
           </div>
@@ -571,7 +587,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">16.1k</span>
+    <span title="Site words total count">16.4k</span>
   
 </div>
 
