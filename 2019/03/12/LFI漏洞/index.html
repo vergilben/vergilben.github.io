@@ -62,7 +62,7 @@
 
 
 
-  <meta name="keywords" content="问题,">
+  <meta name="keywords" content="信安,">
 
 
 
@@ -73,22 +73,18 @@
 
 
 
-<meta name="description" content="一直想在博客上添加更新时间以便别人访问时可以看到我最新写的文章，百度试了好几种方法仍不能实现，我决定自己动手找出来怎么设置">
-<meta name="keywords" content="问题">
+<meta name="description" content="本地文件包含（Local File Include）是php脚本的一大特色，程序员们为了开发方便，常常会用到包含。比如把一系列功能函数都写进function.php中，之后当某个文件需要使用时直接调用定义的函数。">
+<meta name="keywords" content="信安">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于怎样添加博客的更新时间（完结）">
-<meta property="og:url" content="http://yoursite.com/2019/01/10/关于怎样添加博客的更新时间/index.html">
+<meta property="og:title" content="LFI漏洞">
+<meta property="og:url" content="http://yoursite.com/2019/03/12/LFI漏洞/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="一直想在博客上添加更新时间以便别人访问时可以看到我最新写的文章，百度试了好几种方法仍不能实现，我决定自己动手找出来怎么设置">
+<meta property="og:description" content="本地文件包含（Local File Include）是php脚本的一大特色，程序员们为了开发方便，常常会用到包含。比如把一系列功能函数都写进function.php中，之后当某个文件需要使用时直接调用定义的函数。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://i.imgur.com/3UUzkzB.png">
-<meta property="og:image" content="https://i.imgur.com/9uv83Xz.png">
-<meta property="og:image" content="https://i.imgur.com/lBtrx7k.png">
-<meta property="og:updated_time" content="2019-01-09T16:00:00.000Z">
+<meta property="og:updated_time" content="2019-03-12T05:36:39.450Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于怎样添加博客的更新时间（完结）">
-<meta name="twitter:description" content="一直想在博客上添加更新时间以便别人访问时可以看到我最新写的文章，百度试了好几种方法仍不能实现，我决定自己动手找出来怎么设置">
-<meta name="twitter:image" content="https://i.imgur.com/3UUzkzB.png">
+<meta name="twitter:title" content="LFI漏洞">
+<meta name="twitter:description" content="本地文件包含（Local File Include）是php脚本的一大特色，程序员们为了开发方便，常常会用到包含。比如把一系列功能函数都写进function.php中，之后当某个文件需要使用时直接调用定义的函数。">
 
 
 
@@ -118,13 +114,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/01/10/关于怎样添加博客的更新时间/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/12/LFI漏洞/">
 
 
 
 
 
-  <title>关于怎样添加博客的更新时间（完结） | Blog</title>
+  <title>LFI漏洞 | Blog</title>
   
 
 
@@ -251,7 +247,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/10/关于怎样添加博客的更新时间/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/12/LFI漏洞/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Vergilben">
@@ -268,7 +264,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">关于怎样添加博客的更新时间（完结）</h1>
+          <h1 class="post-title" itemprop="name headline">LFI漏洞</h1>
         
 
         <div class="post-meta">
@@ -280,8 +276,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-10T19:54:31+08:00">
-                2019-01-10
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-12T12:52:42+08:00">
+                2019-03-12
               </time>
             
 
@@ -296,8 +292,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-01-10T00:00:00+08:00">
-                2019-01-10
+              <time title="Post modified" itemprop="dateModified" datetime="2019-03-12T13:36:39+08:00">
+                2019-03-12
               </time>
             
           </span>
@@ -330,15 +326,7 @@
       
 
       
-        <p>一直想在博客上添加更新时间以便别人访问时可以看到我最新写的文章，百度试了好几种方法仍不能实现，我决定自己动手找出来怎么设置<br><a id="more"></a><br>经过一段时间的接触后，我发现hexo的next主题其实集成了很多功能，根本不用去再添加代码，只需要在next目录下的config.yml设置一下true或者false就更开启或关闭某些功能，这篇主要讲一下如何添加博客的更新时间<br>在刚开始我去百度上找的方法都是在一个文件里添加许多代码，我的站点就因为这个崩过一次，在另一次尝试中，我发现config.yml里面有updated这个选项，于是就试了一下，非常简单。</p>
-<p>打开<code>你的博客文件夹/themes/next/config.yml</code></p>
-<p>找到<code>updated_at:</code> 并把后面的false改为true</p>
-<p><img src="https://i.imgur.com/3UUzkzB.png" alt=""></p>
-<p>之后再写博客时，在头部添上一行：<code>updated: xxxx-xx-xx</code> 就可以了</p>
-<p><img src="https://i.imgur.com/9uv83Xz.png" alt=""></p>
-<p>这样就完成了。</p>
-<p><img src="https://i.imgur.com/lBtrx7k.png" alt=""></p>
-<p>同样，以上方法适用面很广，如果想在博客中添加点功能，不如就按上面的方法去找找，说不定会更简单。</p>
+        <p>本地文件包含（Local File Include）是php脚本的一大特色，程序员们为了开发方便，常常会用到包含。比如把一系列功能函数都写进function.php中，之后当某个文件需要使用时直接调用定义的函数。<a id="more"></a>本地包含漏洞是php中一种典型的高危漏洞，由于程序员未对用户可控变量的输入进行检查，导致用户可以控制被包含的文件，成功利用时可以使web server将特定文件当成php执行，从而导致用户获取颐一定的服务器权限。</p>
 
       
     </div>
@@ -356,7 +344,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/问题/" rel="tag"># 问题</a>
+            <a href="/tags/信安/" rel="tag"># 信安</a>
           
         </div>
       
@@ -369,8 +357,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/06/Python-正则/" rel="next" title="Python 正则（完结）">
-                <i class="fa fa-chevron-left"></i> Python 正则（完结）
+              <a href="/2019/03/10/php反序列化漏洞/" rel="next" title="php反序列化漏洞">
+                <i class="fa fa-chevron-left"></i> php反序列化漏洞
               </a>
             
           </div>
@@ -378,10 +366,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/01/28/Python与编程/" rel="prev" title="Python与编程（更新中）">
-                Python与编程（更新中） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
