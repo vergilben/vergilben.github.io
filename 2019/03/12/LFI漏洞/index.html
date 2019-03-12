@@ -73,18 +73,28 @@
 
 
 
-<meta name="description" content="本地文件包含（Local File Include）是php脚本的一大特色，程序员们为了开发方便，常常会用到包含。比如把一系列功能函数都写进function.php中，之后当某个文件需要使用时直接调用定义的函数。">
+<meta name="description" content="LFI漏洞本地文件包含（Local File Include）是php脚本的一大特色，程序员们为了开发方便，常常会用到包含。比如把一系列功能函数都写进function.php中，之后当某个文件需要使用时直接调用定义的函数。">
 <meta name="keywords" content="信安">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LFI漏洞">
 <meta property="og:url" content="http://yoursite.com/2019/03/12/LFI漏洞/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="本地文件包含（Local File Include）是php脚本的一大特色，程序员们为了开发方便，常常会用到包含。比如把一系列功能函数都写进function.php中，之后当某个文件需要使用时直接调用定义的函数。">
+<meta property="og:description" content="LFI漏洞本地文件包含（Local File Include）是php脚本的一大特色，程序员们为了开发方便，常常会用到包含。比如把一系列功能函数都写进function.php中，之后当某个文件需要使用时直接调用定义的函数。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-12T05:36:39.450Z">
+<meta property="og:image" content="https://i.imgur.com/4uMbWTv.png">
+<meta property="og:image" content="https://i.imgur.com/1wQGTFI.png">
+<meta property="og:image" content="https://i.imgur.com/9OyVdiE.png">
+<meta property="og:image" content="https://i.imgur.com/yZ9XnqC.png">
+<meta property="og:image" content="https://i.imgur.com/YJ1HkWn.png">
+<meta property="og:image" content="https://i.imgur.com/5nD7sGx.png">
+<meta property="og:image" content="https://i.imgur.com/Qir11EL.png">
+<meta property="og:image" content="https://i.imgur.com/n9fEgSa.png">
+<meta property="og:image" content="https://i.imgur.com/LwuCXI7.png">
+<meta property="og:updated_time" content="2019-03-12T09:48:41.696Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LFI漏洞">
-<meta name="twitter:description" content="本地文件包含（Local File Include）是php脚本的一大特色，程序员们为了开发方便，常常会用到包含。比如把一系列功能函数都写进function.php中，之后当某个文件需要使用时直接调用定义的函数。">
+<meta name="twitter:description" content="LFI漏洞本地文件包含（Local File Include）是php脚本的一大特色，程序员们为了开发方便，常常会用到包含。比如把一系列功能函数都写进function.php中，之后当某个文件需要使用时直接调用定义的函数。">
+<meta name="twitter:image" content="https://i.imgur.com/4uMbWTv.png">
 
 
 
@@ -292,7 +302,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-03-12T13:36:39+08:00">
+              <time title="Post modified" itemprop="dateModified" datetime="2019-03-12T17:48:41+08:00">
                 2019-03-12
               </time>
             
@@ -326,7 +336,18 @@
       
 
       
-        <p>本地文件包含（Local File Include）是php脚本的一大特色，程序员们为了开发方便，常常会用到包含。比如把一系列功能函数都写进function.php中，之后当某个文件需要使用时直接调用定义的函数。<a id="more"></a>本地包含漏洞是php中一种典型的高危漏洞，由于程序员未对用户可控变量的输入进行检查，导致用户可以控制被包含的文件，成功利用时可以使web server将特定文件当成php执行，从而导致用户获取颐一定的服务器权限。</p>
+        <h1 id="LFI漏洞"><a href="#LFI漏洞" class="headerlink" title="LFI漏洞"></a>LFI漏洞</h1><p>本地文件包含（Local File Include）是php脚本的一大特色，程序员们为了开发方便，常常会用到包含。比如把一系列功能函数都写进function.php中，之后当某个文件需要使用时直接调用定义的函数。<a id="more"></a>本地包含漏洞是php中一种典型的高危漏洞，由于程序员未对用户可控变量的输入进行检查，导致用户可以控制被包含的文件，成功利用时可以使web server将特定文件当成php执行，从而导致用户获取颐一定的服务器权限。</p>
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p>下面展示一个存在漏洞的服务器脚本（test.php）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">if ($_GET[&apos;func&apos;]) &#123;</span><br><span class="line">    include $_GET[&apos;func&apos;];</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    include &apos;default.php&apos;;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br><span class="line">//示例</span><br></pre></td></tr></table></figure></p>
+<p>在正常的使用中，<code>http://www.xxx.com/test.php?func=fuction</code>就包含了function这个文件，但是由于参数没有进行过滤，我们可以自己提交参数内容，这时就会导致文件包含漏洞。比如，我们提交：<code>http://www.xxx.com/test.php?f=hello.txt</code>。<br>根据合天提供的实验环境，我们直接访问test.php，不赋值func参数，则默认包含同一，目录下的defualt.php<br><img src="https://i.imgur.com/4uMbWTv.png" alt=""><br>访问：<br><img src="https://i.imgur.com/1wQGTFI.png" alt=""><br>接下来我们赋值func参数为/etc/passwd，由于test.php脚本位于Linux下的/var/www目录下，所以必须先返回到服务器根目录下再包含/etc/passwd，即：<code>http://10.1.1.137/test.php?func=../../etc/passwd</code><br>访问：<br><img src="https://i.imgur.com/9OyVdiE.png" alt=""></p>
+<p>接下来我们<strong>自己上传文件并实现包含</strong>。<br>这里主要是结合服务器一些文件上传点，比如头像上传、上传照片至相册等，假设我们可以自定义上传头像，头像文件在网站根目录下的upload下，具体目录可以传上去之后查看图片的url信息。<br>先制作包含恶意代码的图片文件：</p>
+<ol>
+<li>在windows下用copy命令，shell.php为一句话木马（我们用phpinfo()代替，注意在代码前面加上一些其它字符，否则在合成时‘&lt;’会被‘吃掉’）：<br><img src="https://i.imgur.com/yZ9XnqC.png" alt=""><br>随便在windows中找一张图片，与shell.php放在同一个目录下，接下来在windows命令中执行：<code>copy 123.jpg /b + shell.php /a eval.jpg</code>:：<br><img src="https://i.imgur.com/YJ1HkWn.png" alt=""><br>我们查看一下eval.jpg：<br><img src="https://i.imgur.com/5nD7sGx.png" alt=""><br>可以看到合成成功了，我们的图片木马文件制作完成。</li>
+<li><p>恶意上传图片<br><img src="https://i.imgur.com/Qir11EL.png" alt=""><br>上传成功，并且得到了图片的存储路径：<br><img src="https://i.imgur.com/n9fEgSa.png" alt=""></p>
+</li>
+<li><p>结合LFI漏洞将恶意图片进行包含，即将func参数赋值为upload/eval.jpg：<br><img src="https://i.imgur.com/LwuCXI7.png" alt=""></p>
+</li>
+</ol>
+<h2 id="包含webserver日志文件"><a href="#包含webserver日志文件" class="headerlink" title="包含webserver日志文件"></a>包含webserver日志文件</h2><p>apache的日志文件在LFI漏洞的利用中是非常常见的。因为不管我们提交的Get请求或者Post请求都会被apache记录到日志文件里。所以我们可以控制请求内容，将恶意代码写入日志文件，从而实现包含。首先可以包含apache2.conf查看日志文件位置以及文件名格式配置(这里不是想象中的httpd.conf配置文件，这里要说明的是apache2的配置文件是apache2.conf,而不是httpd.conf)。</p>
 
       
     </div>
@@ -417,8 +438,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -472,6 +502,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#LFI漏洞"><span class="nav-number">1.</span> <span class="nav-text">LFI漏洞</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#实例"><span class="nav-number">1.1.</span> <span class="nav-text">实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#包含webserver日志文件"><span class="nav-number">1.2.</span> <span class="nav-text">包含webserver日志文件</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -499,7 +545,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">20.0k</span>
+    <span title="Site words total count">20.6k</span>
   
 </div>
 
