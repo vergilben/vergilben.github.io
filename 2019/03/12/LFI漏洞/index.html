@@ -90,7 +90,14 @@
 <meta property="og:image" content="https://i.imgur.com/Qir11EL.png">
 <meta property="og:image" content="https://i.imgur.com/n9fEgSa.png">
 <meta property="og:image" content="https://i.imgur.com/LwuCXI7.png">
-<meta property="og:updated_time" content="2019-03-12T09:48:41.696Z">
+<meta property="og:image" content="https://i.imgur.com/OFaTOeB.png">
+<meta property="og:image" content="https://i.imgur.com/rsJnQJi.png">
+<meta property="og:image" content="https://i.imgur.com/beszOWA.png">
+<meta property="og:image" content="https://i.imgur.com/WPbv0C5.png">
+<meta property="og:image" content="https://i.imgur.com/1cr7sL6.png">
+<meta property="og:image" content="https://i.imgur.com/3FkmLoq.png">
+<meta property="og:image" content="https://i.imgur.com/F81qVNe.png">
+<meta property="og:updated_time" content="2019-03-13T07:27:20.440Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LFI漏洞">
 <meta name="twitter:description" content="LFI漏洞本地文件包含（Local File Include）是php脚本的一大特色，程序员们为了开发方便，常常会用到包含。比如把一系列功能函数都写进function.php中，之后当某个文件需要使用时直接调用定义的函数。">
@@ -302,8 +309,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-03-12T17:48:41+08:00">
-                2019-03-12
+              <time title="Post modified" itemprop="dateModified" datetime="2019-03-13T15:27:20+08:00">
+                2019-03-13
               </time>
             
           </span>
@@ -347,8 +354,28 @@
 <li><p>结合LFI漏洞将恶意图片进行包含，即将func参数赋值为upload/eval.jpg：<br><img src="https://i.imgur.com/LwuCXI7.png" alt=""></p>
 </li>
 </ol>
-<h2 id="包含webserver日志文件"><a href="#包含webserver日志文件" class="headerlink" title="包含webserver日志文件"></a>包含webserver日志文件</h2><p>apache的日志文件在LFI漏洞的利用中是非常常见的。因为不管我们提交的Get请求或者Post请求都会被apache记录到日志文件里。所以我们可以控制请求内容，将恶意代码写入日志文件，从而实现包含。首先可以包含apache2.conf查看日志文件位置以及文件名格式配置(这里不是想象中的httpd.conf配置文件，这里要说明的是apache2的配置文件是apache2.conf,而不是httpd.conf)。</p>
-
+<h2 id="包含webserver日志文件"><a href="#包含webserver日志文件" class="headerlink" title="包含webserver日志文件"></a>包含webserver日志文件</h2><p>apache的日志文件在LFI漏洞的利用中是非常常见的。因为不管我们提交的Get请求或者Post请求都会被apache记录到日志文件里。所以我们可以控制请求内容，将恶意代码写入日志文件，从而实现包含。首先可以包含apache2.conf查看日志文件位置以及文件名格式配置(这里不是想象中的httpd.conf配置文件，这里要说明的是apache2的配置文件是apache2.conf,而不是httpd.conf)。<br>接下来开始操作。</p>
+<ol>
+<li>先查看apache2.conf<br><img src="https://i.imgur.com/OFaTOeB.png" alt=""><br>在error.log同一目录下有个access.log访问日志文件，所以我们访问<code>http://10.1.1.137/test.php?file=../&lt;?php phpinfo();?&gt;.php</code>会被记录下来，这样我们便将php代码写进了access.log文件，这个过程还需要burpsite的帮助。</li>
+<li>开始写入php代码<br>先启动burpsite并配置代理<br><img src="https://i.imgur.com/rsJnQJi.png" alt=""></li>
+</ol>
+<p>接下来对url进行解码，转码成功如下所示<br><img src="https://i.imgur.com/beszOWA.png" alt=""></p>
+<p>点击Forward，关闭burpsite恢复代理。</p>
+<ol start="3">
+<li>包含access日志文件<br>访问：<code>http://10.1.1.137/test.php?func=../log/apache2/access.log</code></li>
+</ol>
+<p><img src="https://i.imgur.com/WPbv0C5.png" alt=""></p>
+<ol start="4">
+<li><p>注意<br>在实际利用中，需要注意一下几个问题：<br>1）Access.log和error.log过大，这时候有可能会导致超时。所以如果能包含其他文件那就包含其他文件，或者使用诸如此类的木马<code>&lt;?php $c=fopen(&#39;/tmp/g&#39;,&#39;w&#39;);fwrite($c,&#39;&lt;?php eval($_POST[&quot;1&quot;]);?&gt;&#39;);?&gt;</code>，打开包含日志文件时就会新创建另外一个一句话木马。<br>2）写入的代码被转义。比如我们提交<code>test.php?func=../&lt;?php phpinfo();?&gt;.php</code>时，在&lt;?php 后面紧跟着一个空格，这个空格如果被转义成%20就会导致php代码执行失败，还有时候写进access.log文件里的还可能是将两个尖括号&lt;&gt;也转义了的。在实际测试中，用火狐、谷歌、IE都会转义，对于所有以上情况，可以使用如上所诉的<strong>burp进行抓包解码</strong>。</p>
+</li>
+<li><p>包含其他日志文件<br>文件包含漏洞的实质是包含我们可以控制文件内容的文件，所以其他日志文件如果我们可控的话也是可以进行包含利用的。这里以VSFTPD的日志文件为例进行演示。实际利用过程中要先得到目标系统的linux发行版本号、FTP server的版本号，而后找默认日志目录。</p>
+</li>
+</ol>
+<p>第一步是测试权限，看是否有权限读取文件(vsftpd的日志位置路径为 /var/log/vsftpd.log)：<code>http://10.1.1.137/test.php?func=../log/vsftpd.log</code><br><img src="https://i.imgur.com/1cr7sL6.png" alt=""></p>
+<p>可以看到是可以包含的，接下来我们登陆服务器ftp，但是填写用户名为：<code>&lt;?php phpinfo();?&gt;</code>，密码随意。<br><img src="https://i.imgur.com/3FkmLoq.png" alt=""></p>
+<p>这时我们的“恶意代码”已经写入了vsftpd日志文件，接下来包含一下试试：<br><img src="https://i.imgur.com/F81qVNe.png" alt=""></p>
+<p>成功包含。</p>
+<h2 id="包含环境变量文件"><a href="#包含环境变量文件" class="headerlink" title="包含环境变量文件"></a>包含环境变量文件</h2>
       
     </div>
     
@@ -511,7 +538,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#LFI漏洞"><span class="nav-number">1.</span> <span class="nav-text">LFI漏洞</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#实例"><span class="nav-number">1.1.</span> <span class="nav-text">实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#包含webserver日志文件"><span class="nav-number">1.2.</span> <span class="nav-text">包含webserver日志文件</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#LFI漏洞"><span class="nav-number">1.</span> <span class="nav-text">LFI漏洞</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#实例"><span class="nav-number">1.1.</span> <span class="nav-text">实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#包含webserver日志文件"><span class="nav-number">1.2.</span> <span class="nav-text">包含webserver日志文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#包含环境变量文件"><span class="nav-number">1.3.</span> <span class="nav-text">包含环境变量文件</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -545,7 +572,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">20.6k</span>
+    <span title="Site words total count">21.2k</span>
   
 </div>
 
