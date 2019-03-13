@@ -97,7 +97,11 @@
 <meta property="og:image" content="https://i.imgur.com/1cr7sL6.png">
 <meta property="og:image" content="https://i.imgur.com/3FkmLoq.png">
 <meta property="og:image" content="https://i.imgur.com/F81qVNe.png">
-<meta property="og:updated_time" content="2019-03-13T07:27:20.440Z">
+<meta property="og:image" content="https://i.imgur.com/poyClOY.png">
+<meta property="og:image" content="https://i.imgur.com/QLKAVmO.png">
+<meta property="og:image" content="https://i.imgur.com/HFoYSOQ.png">
+<meta property="og:image" content="https://i.imgur.com/CSnzUq1.png">
+<meta property="og:updated_time" content="2019-03-13T12:00:49.974Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LFI漏洞">
 <meta name="twitter:description" content="LFI漏洞本地文件包含（Local File Include）是php脚本的一大特色，程序员们为了开发方便，常常会用到包含。比如把一系列功能函数都写进function.php中，之后当某个文件需要使用时直接调用定义的函数。">
@@ -309,7 +313,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-03-13T15:27:20+08:00">
+              <time title="Post modified" itemprop="dateModified" datetime="2019-03-13T20:00:49+08:00">
                 2019-03-13
               </time>
             
@@ -375,7 +379,17 @@
 <p>可以看到是可以包含的，接下来我们登陆服务器ftp，但是填写用户名为：<code>&lt;?php phpinfo();?&gt;</code>，密码随意。<br><img src="https://i.imgur.com/3FkmLoq.png" alt=""></p>
 <p>这时我们的“恶意代码”已经写入了vsftpd日志文件，接下来包含一下试试：<br><img src="https://i.imgur.com/F81qVNe.png" alt=""></p>
 <p>成功包含。</p>
-<h2 id="包含环境变量文件"><a href="#包含环境变量文件" class="headerlink" title="包含环境变量文件"></a>包含环境变量文件</h2>
+<h2 id="包含环境变量文件"><a href="#包含环境变量文件" class="headerlink" title="包含环境变量文件"></a>包含环境变量文件</h2><ol>
+<li>包含环境变量文件<br>Linux下有一个文件/proc/self/environ，这个文件里保存了系统的一些变量。内容如下<br><img src="https://i.imgur.com/poyClOY.png" alt=""><br>用户可以通过修改浏览器的useragent信息插入自己的内容到该文件，将php代码写入进去之后再利用LFI进行包含就可以实现对漏洞的利用。首先验证访问权限，看是否有权限读取该文件内容：<code>http://10.1.1.137/test.php?func=../../proc/self/environ</code></li>
+</ol>
+<p><img src="https://i.imgur.com/QLKAVmO.png" alt=""><br>可以看到红框里的内容，当前的USER_AGENT变量被写进了这个文件，而USER_AGENT是可以伪造的，这里我们利用firefox的UAControl进行伪造，先编辑UAControl对于这个网站的USER_AGENT信息。点开工具栏的工具——&gt;UAControl，在弹出的窗口进行如下操作<br><img src="https://i.imgur.com/HFoYSOQ.png" alt=""></p>
+<p>接下来我们对environ文件进行包含<br><img src="https://i.imgur.com/CSnzUq1.png" alt=""></p>
+<p>可以看到包含成功。</p>
+<ol start="2">
+<li>结合phpinfo包含临时文件<br>php有个特性是我们向服务器上任意php文件post请求上传数据时，都会生成临时文件，默认是传到tmp目录下，并且文件名是随机的。当然，我们可以暴力猜解，但是这样子还是太过鸡肋的。国外一个安全研究者提出利用phpinfo来找出所上传的文件路径，因为phpinfo会记录一些请求，包括在服务器上生成的临时文件名字和目录。所以借助phpinfo()我们可以找出临时文件名并利用。<br>这一块实验操作有点麻烦，需要用到脚本和菜刀工具获取，就不在这里写了。</li>
+</ol>
+<p>总结一下：这个实验做了两三天，原理都差不多懂了，还差实践，合天所给的实验环境都能复现出来，相比以前很大的进步，LFI的关键就在于找准要包含的，比如前面说的图片、日志文件等等。这次给自己打9.5~毕竟打10分有点膨胀了，自己给自己打个气吧，加油~</p>
+
       
     </div>
     
@@ -572,7 +586,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">21.2k</span>
+    <span title="Site words total count">21.7k</span>
   
 </div>
 
