@@ -62,7 +62,7 @@
 
 
 
-  <meta name="keywords" content="问题,">
+  <meta name="keywords" content="Python,">
 
 
 
@@ -73,18 +73,18 @@
 
 
 
-<meta name="description" content="Some Questions此篇博客长期更新，主要记录我在学习中遇到的一些知识性问题。">
-<meta name="keywords" content="问题">
+<meta name="description" content="os模块的应用非常广泛，提供了非常丰富的方法用来处理文件和目录。比如在自动化测试中，经常需要查找操作文件，比如说查找配置文件（从而读取配置文件的信息），查找测试报告（从而发送测试报告邮件），经常要对大量文件和大量路径进行操作，这就依赖于os模块。">
+<meta name="keywords" content="Python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="遇到的问题（不定期更新）">
-<meta property="og:url" content="http://yoursite.com/2018/12/30/遇到的问题/index.html">
+<meta property="og:title" content="Python中的os模块">
+<meta property="og:url" content="http://yoursite.com/2019/03/14/Python中的os模块/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="Some Questions此篇博客长期更新，主要记录我在学习中遇到的一些知识性问题。">
+<meta property="og:description" content="os模块的应用非常广泛，提供了非常丰富的方法用来处理文件和目录。比如在自动化测试中，经常需要查找操作文件，比如说查找配置文件（从而读取配置文件的信息），查找测试报告（从而发送测试报告邮件），经常要对大量文件和大量路径进行操作，这就依赖于os模块。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-12-30T16:00:00.000Z">
+<meta property="og:updated_time" content="2019-03-14T12:55:31.521Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="遇到的问题（不定期更新）">
-<meta name="twitter:description" content="Some Questions此篇博客长期更新，主要记录我在学习中遇到的一些知识性问题。">
+<meta name="twitter:title" content="Python中的os模块">
+<meta name="twitter:description" content="os模块的应用非常广泛，提供了非常丰富的方法用来处理文件和目录。比如在自动化测试中，经常需要查找操作文件，比如说查找配置文件（从而读取配置文件的信息），查找测试报告（从而发送测试报告邮件），经常要对大量文件和大量路径进行操作，这就依赖于os模块。">
 
 
 
@@ -114,13 +114,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/12/30/遇到的问题/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/14/Python中的os模块/">
 
 
 
 
 
-  <title>遇到的问题（不定期更新） | Blog</title>
+  <title>Python中的os模块 | Blog</title>
   
 
 
@@ -247,7 +247,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/30/遇到的问题/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/14/Python中的os模块/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Vergilben">
@@ -264,7 +264,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">遇到的问题（不定期更新）</h1>
+          <h1 class="post-title" itemprop="name headline">Python中的os模块</h1>
         
 
         <div class="post-meta">
@@ -276,8 +276,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-30T21:23:07+08:00">
-                2018-12-30
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-14T19:56:00+08:00">
+                2019-03-14
               </time>
             
 
@@ -292,8 +292,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-12-31T00:00:00+08:00">
-                2018-12-31
+              <time title="Post modified" itemprop="dateModified" datetime="2019-03-14T20:55:31+08:00">
+                2019-03-14
               </time>
             
           </span>
@@ -326,28 +326,52 @@
       
 
       
-        <h1 id="Some-Questions"><a href="#Some-Questions" class="headerlink" title="Some Questions"></a>Some Questions</h1><p>此篇博客长期更新，主要记录我在学习中遇到的一些知识性问题。<br><a id="more"></a></p>
-<h2 id="1、-args-和-kwargs"><a href="#1、-args-和-kwargs" class="headerlink" title="1、*args 和 **kwargs"></a>1、<code>*args</code> 和 <code>**kwargs</code></h2><p>我在前面学习“类”的过程中遇到过这个东西，当时并没有太在意，但现在我发现许多代码里面都有它们的身影，还是挺重要的，所以就详细地查了查，在这里解释一下：</p>
+        <p>os模块的应用非常广泛，提供了非常丰富的方法用来处理文件和目录。比如在自动化测试中，经常需要查找操作文件，比如说查找配置文件（从而读取配置文件的信息），查找测试报告（从而发送测试报告邮件），经常要对大量文件和大量路径进行操作，这就依赖于os模块。<a id="more"></a><br>下面开始整理其使用方法：</p>
+<h1 id="os-access-pass-mode"><a href="#os-access-pass-mode" class="headerlink" title="os.access(pass,mode)"></a><strong>os.access(pass,mode)</strong></h1><p>检验权限模式</p>
 <blockquote>
-<p>当函数的参数不确定时，可以使用<code>*args</code>和<code>**kwargs</code>,<code>*args</code>没有key值，<code>**kwargs</code>有key值。这两个是python中的可变参数。<code>*args</code>表示任何多个无名参数，它是一个tuple；<code>**kwargs</code>表示关键字参数，它是一个dict。</p>
+<p>os.access()方法使用当前的uid/gid尝试访问路径。大部分操作使用有效的uid/gid, 因此运行环境可以在 suid/sgid 环境尝试。</p>
 </blockquote>
+<h2 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h2><ol>
+<li>path——&gt;用来检测是否有访问权限的路径。</li>
+<li>mode——&gt;测试存在的路径：<ul>
+<li>os.F_OK:包含在access()的mode参数中，测试path是否存在。</li>
+<li>os.R_OK:包含在access()的mode参数中，测试path是否可读。</li>
+<li>os.W_OK:包含在access()的mode参数中，测试path是否可写。</li>
+<li>os.X_OK:包含在access()的mode参数中，测试path是否可执行。</li>
+</ul>
+</li>
+</ol>
+<h2 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h2><p>如果允许访问返回True，否则返回False。</p>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; os.access(r&quot;C:\Users\wangx\Desktop\test.txt&quot;,os.F_OK)</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; os.access(r&quot;C:\Users\wangx\Desktop\test.txt&quot;,os.R_OK)</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; os.access(r&quot;C:\Users\wangx\Desktop\test.txt&quot;,os.W_OK)</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; os.access(r&quot;C:\Users\wangx\Desktop\test.txt&quot;,os.X_OK)</span><br><span class="line">True</span><br></pre></td></tr></table></figure>
+<h1 id="os-chdir-path"><a href="#os-chdir-path" class="headerlink" title="os.chdir(path)"></a><strong>os.chdir(path)</strong></h1><p>改变当前工作目录</p>
 <blockquote>
-<p><strong>注意：</strong>同时使用<code>args</code>和<code>**kwargs</code>时，必须<code>*args</code>参数列要在<code>**kwargs</code>前。</p>
+<p>os.chdir() 方法用于改变当前工作目录到指定的路径。</p>
 </blockquote>
-<p>比如，你想定义一个函数来求算术和，如果要求几个数的和不确定呢？数量过于庞大怎么办？<br>用代码展示一下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">def foo(x,*args):</span><br><span class="line">	print(x)</span><br><span class="line">	print(args)</span><br><span class="line"> </span><br><span class="line">foo(1,2,3,4,5)  #其中的2,3,4,5都给了args</span><br></pre></td></tr></table></figure></p>
-<p>运行结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">(2, 3, 4, 5)</span><br></pre></td></tr></table></figure></p>
-<p><code>*args</code>接收了后面四个数值，现在我们可以感受到它的作用了。如果你不确定你会用到多少参数，就用它。</p>
-<p>用个例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def foo(*args):</span><br><span class="line">    print(sum(args))</span><br><span class="line"></span><br><span class="line">foo(1,2,3,4,5)</span><br></pre></td></tr></table></figure></p>
-<p>运行结果：<code>15</code></p>
-<p>而<code>**kwargs</code>，正如上文，我们可以当它是个字典，用代码演示一下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def foo(x,**kwargs):</span><br><span class="line">    print(x)</span><br><span class="line">    print(kwargs)</span><br><span class="line">foo(1,y=1,a=2,b=3,c=4) #将y=1,a=2,b=3,c=4以字典的方式给了kwargs</span><br></pre></td></tr></table></figure></p>
-<p>运行结果如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">&#123;&apos;y&apos;: 1, &apos;a&apos;: 2, &apos;b&apos;: 3, &apos;c&apos;: 4&#125;</span><br></pre></td></tr></table></figure></p>
-<p><strong>注意！：</strong>顺序必须是：位置参数、<code>*args</code>、<code>**kwargs</code>（如果有默认参数的话，默认参数在位置参数后面）<br>否则会报错的。</p>
-<p>正确示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">def foo(x,*args,**kwargs):</span><br><span class="line">    print(x)</span><br><span class="line">    print(args)</span><br><span class="line">    print(kwargs)</span><br><span class="line">foo(1,2,3,4,y=1,a=2,b=3,c=4) #将1传给了x，将2,3,4以元组方式传给了args，y=1,a=2,b=3,c=4以字典的方式给了kwargs</span><br></pre></td></tr></table></figure></p>
-<p>运行结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">(2, 3, 4)</span><br><span class="line">&#123;&apos;y&apos;: 1, &apos;a&apos;: 2, &apos;b&apos;: 3, &apos;c&apos;: 4&#125;</span><br></pre></td></tr></table></figure></p>
-<p>错误示例（顺序错误）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">def foo(x,**kwargs,*args):</span><br><span class="line">    print(x)</span><br><span class="line">    print(args)</span><br><span class="line">    print(kwargs)</span><br><span class="line">foo(1,y=1,a=2,b=3,c=4,2,3,4)</span><br></pre></td></tr></table></figure></p>
-<p>运行结果：<br><code>SyntaxError: invalid syntax</code></p>
-<p>本文部分摘录于博客：<a href="https://www.cnblogs.com/xuyuanyuan123/p/6674645.html" target="_blank" rel="noopener">https://www.cnblogs.com/xuyuanyuan123/p/6674645.html</a></p>
-<p>至此，这部分的讲解告一段落。此篇博客不定期更新。</p>
+<h2 id="参数-1"><a href="#参数-1" class="headerlink" title="参数"></a>参数</h2><p>path——&gt;要切换到的新路径。</p>
+<h2 id="返回值-1"><a href="#返回值-1" class="headerlink" title="返回值"></a>返回值</h2><p>如果允许访问返回True，否则返回False。</p>
+<h2 id="例子-1"><a href="#例子-1" class="headerlink" title="例子"></a>例子</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import os,sys</span><br><span class="line">&gt;&gt;&gt; os.getcwd()  //获取当前工作目录</span><br><span class="line">&apos;C:\\Users\\wangx&apos;</span><br><span class="line">&gt;&gt;&gt; os.chdir(&quot;C:\\Users&quot;)</span><br><span class="line">&gt;&gt;&gt; os.getcwd()</span><br><span class="line">&apos;C:\\Users&apos;</span><br></pre></td></tr></table></figure>
+<h1 id="os-chflags-path-flags"><a href="#os-chflags-path-flags" class="headerlink" title="os.chflags(path,flags)"></a><strong>os.chflags(path,flags)</strong></h1><p>（只支持在Unix下使用，这里只说一下它的使用方法，先码住说不定有用呢）<br>设置路径的标记为数字标记</p>
+<blockquote>
+<p>os.chflags() 方法用于设置路径的标记为数字标记。多个标记可以使用OR来组合起来。</p>
+</blockquote>
+<h2 id="参数-2"><a href="#参数-2" class="headerlink" title="参数"></a>参数</h2><ol>
+<li>path——&gt;文件名路径或目录路径。</li>
+<li>flags——&gt;可以是以下值<ul>
+<li>stat.UF_NODUMP: 非转储文件</li>
+<li>stat.UF_IMMUTABLE: 文件是只读的</li>
+<li>stat.UF_APPEND: 文件只能追加内容 </li>
+<li>stat.UF_NOUNLINK: 文件不可删除</li>
+<li>stat.UF_OPAQUE: 目录不透明，需要通过联合堆栈查看</li>
+<li>stat.SF_ARCHIVED: 可存档文件(超级用户可设) </li>
+<li>stat.SF_IMMUTABLE: 文件是只读的(超级用户可设)</li>
+<li>stat.SF_APPEND: 文件只能追加内容(超级用户可设) </li>
+<li>stat.SF_NOUNLINK: 文件不可删除(超级用户可设) </li>
+<li>stat.SF_SNAPSHOT: 快照文件(超级用户可设) </li>
+</ul>
+</li>
+</ol>
+<h2 id="返回值-2"><a href="#返回值-2" class="headerlink" title="返回值"></a>返回值</h2><p>无</p>
+<p>玛雅这东西太难整理了8。。。。。这篇博客每天更新几个吧，学习累了就来整理整理~</p>
 
       
     </div>
@@ -365,7 +389,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/问题/" rel="tag"># 问题</a>
+            <a href="/tags/Python/" rel="tag"># Python</a>
           
         </div>
       
@@ -378,8 +402,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/30/Python-装饰器（二）/" rel="next" title="Python 装饰器（二）（完结）">
-                <i class="fa fa-chevron-left"></i> Python 装饰器（二）（完结）
+              <a href="/2019/03/12/LFI漏洞/" rel="next" title="LFI漏洞">
+                <i class="fa fa-chevron-left"></i> LFI漏洞
               </a>
             
           </div>
@@ -387,10 +411,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/01/01/运维基础/" rel="prev" title="运维基础（完结）">
-                运维基础（完结） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -515,7 +535,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Some-Questions"><span class="nav-number">1.</span> <span class="nav-text">Some Questions</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、-args-和-kwargs"><span class="nav-number">1.1.</span> <span class="nav-text">1、*args 和 **kwargs</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#os-access-pass-mode"><span class="nav-number">1.</span> <span class="nav-text">os.access(pass,mode)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#参数"><span class="nav-number">1.1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#返回值"><span class="nav-number">1.2.</span> <span class="nav-text">返回值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例子"><span class="nav-number">1.3.</span> <span class="nav-text">例子</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#os-chdir-path"><span class="nav-number">2.</span> <span class="nav-text">os.chdir(path)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#参数-1"><span class="nav-number">2.1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#返回值-1"><span class="nav-number">2.2.</span> <span class="nav-text">返回值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例子-1"><span class="nav-number">2.3.</span> <span class="nav-text">例子</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#os-chflags-path-flags"><span class="nav-number">3.</span> <span class="nav-text">os.chflags(path,flags)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#参数-2"><span class="nav-number">3.1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#返回值-2"><span class="nav-number">3.2.</span> <span class="nav-text">返回值</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -549,7 +569,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">21.7k</span>
+    <span title="Site words total count">22.3k</span>
   
 </div>
 

@@ -73,13 +73,13 @@
 
 
 
-<meta name="description" content="缓冲区溢出 简介：缓冲区溢出是指当计算机向缓冲区内填充数据时超过了缓冲区本身的容量，溢出的数据覆盖在合法数据上。理想的情况是：程序检查数据长度并不    允许输入超过缓冲区长度的字符，但是绝大多数程序都会假设数据长度总是与所分配的储存空间相匹配，这就为缓冲区溢出埋下了隐患。    操作系统所使用的缓冲区，又被称为”堆栈”。在各个操作进程之间，指令会被临时储存在“堆栈”中，“堆栈”也会出现缓冲区溢出">
+<meta name="description" content="缓冲区溢出缓冲区溢出是指当计算机向缓冲区内填充数据时超过了缓冲区本身的容量，溢出的数据覆盖在合法数据上。">
 <meta name="keywords" content="信安">
 <meta property="og:type" content="article">
 <meta property="og:title" content="缓冲区溢出漏洞">
 <meta property="og:url" content="http://yoursite.com/2019/03/06/缓冲区溢出漏洞/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="缓冲区溢出 简介：缓冲区溢出是指当计算机向缓冲区内填充数据时超过了缓冲区本身的容量，溢出的数据覆盖在合法数据上。理想的情况是：程序检查数据长度并不    允许输入超过缓冲区长度的字符，但是绝大多数程序都会假设数据长度总是与所分配的储存空间相匹配，这就为缓冲区溢出埋下了隐患。    操作系统所使用的缓冲区，又被称为”堆栈”。在各个操作进程之间，指令会被临时储存在“堆栈”中，“堆栈”也会出现缓冲区溢出">
+<meta property="og:description" content="缓冲区溢出缓冲区溢出是指当计算机向缓冲区内填充数据时超过了缓冲区本身的容量，溢出的数据覆盖在合法数据上。">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://i.imgur.com/6ZjBtLx.png">
 <meta property="og:image" content="https://i.imgur.com/pq5iAK2.png">
@@ -93,10 +93,10 @@
 <meta property="og:image" content="https://i.imgur.com/mFUuhuN.png">
 <meta property="og:image" content="https://i.imgur.com/WH09ubg.png">
 <meta property="og:image" content="https://i.imgur.com/1quQEiD.png">
-<meta property="og:updated_time" content="2019-03-08T11:39:08.395Z">
+<meta property="og:updated_time" content="2019-03-14T12:57:06.257Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="缓冲区溢出漏洞">
-<meta name="twitter:description" content="缓冲区溢出 简介：缓冲区溢出是指当计算机向缓冲区内填充数据时超过了缓冲区本身的容量，溢出的数据覆盖在合法数据上。理想的情况是：程序检查数据长度并不    允许输入超过缓冲区长度的字符，但是绝大多数程序都会假设数据长度总是与所分配的储存空间相匹配，这就为缓冲区溢出埋下了隐患。    操作系统所使用的缓冲区，又被称为”堆栈”。在各个操作进程之间，指令会被临时储存在“堆栈”中，“堆栈”也会出现缓冲区溢出">
+<meta name="twitter:description" content="缓冲区溢出缓冲区溢出是指当计算机向缓冲区内填充数据时超过了缓冲区本身的容量，溢出的数据覆盖在合法数据上。">
 <meta name="twitter:image" content="https://i.imgur.com/6ZjBtLx.png">
 
 
@@ -305,8 +305,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-03-08T19:39:08+08:00">
-                2019-03-08
+              <time title="Post modified" itemprop="dateModified" datetime="2019-03-14T20:57:06+08:00">
+                2019-03-14
               </time>
             
           </span>
@@ -339,8 +339,9 @@
       
 
       
-        <h1 id="缓冲区溢出"><a href="#缓冲区溢出" class="headerlink" title="缓冲区溢出"></a>缓冲区溢出</h1><blockquote>
-<p>简介：缓冲区溢出是指当计算机向缓冲区内填充数据时超过了缓冲区本身的容量，溢出的数据覆盖在合法数据上。理想的情况是：程序检查数据长度并不<br>    允许输入超过缓冲区长度的字符，但是绝大多数程序都会假设数据长度总是与所分配的储存空间相匹配，这就为缓冲区溢出埋下了隐患。<br>    操作系统所使用的缓冲区，又被称为”堆栈”。在各个操作进程之间，指令会被临时储存在“堆栈”中，“堆栈”也会出现缓冲区溢出。<br>    缓冲区溢出的危害：在当前网络与分布式系统安全中，被广泛利用的50%以上都是缓冲区溢出，其中最著名的例子是1988年利用fingerd漏洞的蠕虫。而缓冲区溢出中，最为危险的是堆栈溢出，因为入侵者可以利用堆栈溢出，在函数返回时改变返回程序的地址，让其跳转到任意地址，带来的危害是：一种情况是程序崩溃导致拒绝服务，另外一种就是跳转并且执行一段恶意代码，比如得到shell，然后为所欲为。<br><a id="more"></a></p>
+        <h1 id="缓冲区溢出"><a href="#缓冲区溢出" class="headerlink" title="缓冲区溢出"></a>缓冲区溢出</h1><p>缓冲区溢出是指当计算机向缓冲区内填充数据时超过了缓冲区本身的容量，溢出的数据覆盖在合法数据上。<a id="more"></a></p>
+<blockquote>
+<p>理想的情况是：程序检查数据长度并不允许输入超过缓冲区长度的字符，但是绝大多数程序都会假设数据长度总是与所分配的储存空间相匹配，这就为缓冲区溢出埋下了隐患。操作系统所使用的缓冲区，又被称为”堆栈”。在各个操作进程之间，指令会被临时储存在“堆栈”中，“堆栈”也会出现缓冲区溢出。缓冲区溢出的危害：在当前网络与分布式系统安全中，被广泛利用的50%以上都是缓冲区溢出，其中最著名的例子是1988年利用fingerd漏洞的蠕虫。而缓冲区溢出中，最为危险的是堆栈溢出，因为入侵者可以利用堆栈溢出，在函数返回时改变返回程序的地址，让其跳转到任意地址，带来的危害是：一种情况是程序崩溃导致拒绝服务，另外一种就是跳转并且执行一段恶意代码，比如得到shell，然后为所欲为。</p>
 </blockquote>
 <h1 id="MS12-020漏洞"><a href="#MS12-020漏洞" class="headerlink" title="MS12-020漏洞"></a>MS12-020漏洞</h1><blockquote>
 <p>  微软于2012年3月12日发布安全公告，公布了MS12-020漏洞，漏洞级别为严重，这个级别是微软所有漏洞级别的最高级别，意即会对服务和企业运营造成巨大损失。<br>    这个漏洞的定义是指操作系统的远程桌面协议存在重大漏洞，入侵者（黑客）可以通过向远程桌面默认端口（3389）发一系列特定RDP包，从而获取超级管理员权限，进而入侵系统。<br>    若该主机同时提供80端口服务，那么疑似有相对更大的隐患。<br>    根据微软的安全公告，Windows全系列操作系统（WinXP/Vista/Win7/Win2000/ Win2003/Win2008）均存在受控威胁。但因为远程桌面管理的特殊性，几乎所发现的主机都是服务器，PC机暂未发生。</p>
@@ -576,7 +577,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">21.7k</span>
+    <span title="Site words total count">22.3k</span>
   
 </div>
 
