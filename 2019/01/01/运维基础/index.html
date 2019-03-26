@@ -81,15 +81,15 @@
 <meta property="og:site_name" content="Blog">
 <meta property="og:description" content="网安运维写在前面：此篇博客不定期更新，学到哪写到哪，这方面算是我的一个小兴趣吧，以后可能会往这个方向发展，但现在还早，这个课外的东西不想放下，之前接触过好多了，在这篇记录一下我的想法或者学习成果吧。也许这篇没什么用。。因为都是很碎的知识，顺序会有点乱，可以从左边导航栏找自己需要的东西。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://i.imgur.com/UWjHDiq.png">
-<meta property="og:image" content="https://i.imgur.com/jt5WGiS.png">
-<meta property="og:image" content="https://i.imgur.com/ORuPip1.png">
-<meta property="og:image" content="https://i.imgur.com/nF5dAKc.png">
+<meta property="og:image" content="http://yoursite.com/2019/01/01/运维基础/端口号.png">
+<meta property="og:image" content="http://yoursite.com/2019/01/01/运维基础/dsa.png">
+<meta property="og:image" content="http://yoursite.com/2019/01/01/运维基础/rsa.png">
+<meta property="og:image" content="http://yoursite.com/2019/01/01/运维基础/rsa安全吗.png">
 <meta property="og:updated_time" content="2019-03-04T16:00:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="运维基础（完结）">
 <meta name="twitter:description" content="网安运维写在前面：此篇博客不定期更新，学到哪写到哪，这方面算是我的一个小兴趣吧，以后可能会往这个方向发展，但现在还早，这个课外的东西不想放下，之前接触过好多了，在这篇记录一下我的想法或者学习成果吧。也许这篇没什么用。。因为都是很碎的知识，顺序会有点乱，可以从左边导航栏找自己需要的东西。">
-<meta name="twitter:image" content="https://i.imgur.com/UWjHDiq.png">
+<meta name="twitter:image" content="http://yoursite.com/2019/01/01/运维基础/端口号.png">
 
 
 
@@ -370,7 +370,7 @@
 <li>1024-5000：客户端的临时端口，随机产生</li>
 <li>大于5000：为互联网上的其他服务预留</li>
 </ol>
-<p>查看以http开头的系统默认的注册端口（都在etc/services里面）：<br><img src="https://i.imgur.com/UWjHDiq.png" alt=""></p>
+<p>查看以http开头的系统默认的注册端口（都在etc/services里面）：<br><img src="/2019/01/01/运维基础/端口号.png" alt=""></p>
 <h3 id="常见的网络服务："><a href="#常见的网络服务：" class="headerlink" title="常见的网络服务："></a>常见的网络服务：</h3><ul>
 <li>文件共享服务：FTP、SMB、NFS、HTTP</li>
 <li>域名管理服务：DNS</li>
@@ -390,8 +390,8 @@
 <li>SSH v2：通过公钥加密（数字签名和密钥交换）的方式进行，确保服务器端的身份识别。</li>
 </ul>
 <h3 id="SSH加密算法"><a href="#SSH加密算法" class="headerlink" title="SSH加密算法"></a>SSH加密算法</h3><ol>
-<li>dsa：对称的公钥加密算法，安全性低，数据传输速度快，使用同一个私钥进行加密或解密。<br>dsa的原理如图：<br><img src="https://i.imgur.com/jt5WGiS.png" alt="dsa原理"></li>
-<li>rsa：非对称的公钥加密算法，安全性高，数据传输速度慢，SSH默认的加密算法。<br>rsa算法原理可以去这里看看，比较详细：<a href="https://www.cnblogs.com/cjm123/p/8243424.html" target="_blank" rel="noopener">https://www.cnblogs.com/cjm123/p/8243424.html</a><br>我们来看一下rsa：<br><img src="https://i.imgur.com/ORuPip1.png" alt="rsa原理"><br><strong><em>注意：</em></strong>这种非对称性加密有一定的安全性，但是它并不是绝对安全的！<br>下图是一种破坏它的思路：<br><img src="https://i.imgur.com/nF5dAKc.png" alt=""></li>
+<li>dsa：对称的公钥加密算法，安全性低，数据传输速度快，使用同一个私钥进行加密或解密。<br>dsa的原理如图：<br><img src="/2019/01/01/运维基础/dsa.png" alt="dsa原理"></li>
+<li>rsa：非对称的公钥加密算法，安全性高，数据传输速度慢，SSH默认的加密算法。<br>rsa算法原理可以去这里看看，比较详细：<a href="https://www.cnblogs.com/cjm123/p/8243424.html" target="_blank" rel="noopener">https://www.cnblogs.com/cjm123/p/8243424.html</a><br>我们来看一下rsa：<br><img src="/2019/01/01/运维基础/rsa.png" alt="rsa原理"><br><strong><em>注意：</em></strong>这种非对称性加密有一定的安全性，但是它并不是绝对安全的！<br>下图是一种破坏它的思路：<br><img src="/2019/01/01/运维基础/rsa安全吗.png" alt="rsa安全吗"></li>
 </ol>
 
       
@@ -514,7 +514,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -594,7 +594,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">23.0k</span>
+    <span title="Site words total count">23.2k</span>
   
 </div>
 

@@ -81,23 +81,23 @@
 <meta property="og:site_name" content="Blog">
 <meta property="og:description" content="缓冲区溢出缓冲区溢出是指当计算机向缓冲区内填充数据时超过了缓冲区本身的容量，溢出的数据覆盖在合法数据上。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://i.imgur.com/6ZjBtLx.png">
-<meta property="og:image" content="https://i.imgur.com/pq5iAK2.png">
-<meta property="og:image" content="https://i.imgur.com/u0RGTK8.png">
-<meta property="og:image" content="https://i.imgur.com/mjoy2qs.png">
-<meta property="og:image" content="https://i.imgur.com/WiBEUC4.png">
-<meta property="og:image" content="https://i.imgur.com/bStGIuw.png">
-<meta property="og:image" content="https://i.imgur.com/PpCWz7S.png">
-<meta property="og:image" content="https://i.imgur.com/r059V08.png">
-<meta property="og:image" content="https://i.imgur.com/qk7RuSO.png">
-<meta property="og:image" content="https://i.imgur.com/mFUuhuN.png">
-<meta property="og:image" content="https://i.imgur.com/WH09ubg.png">
-<meta property="og:image" content="https://i.imgur.com/1quQEiD.png">
-<meta property="og:updated_time" content="2019-03-14T12:57:06.257Z">
+<meta property="og:image" content="http://yoursite.com/2019/03/06/缓冲区溢出漏洞/缓冲区1.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/06/缓冲区溢出漏洞/缓冲区2.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/06/缓冲区溢出漏洞/缓冲区3.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/06/缓冲区溢出漏洞/缓冲区4.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/06/缓冲区溢出漏洞/缓冲区5.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/06/缓冲区溢出漏洞/缓冲区6.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/06/缓冲区溢出漏洞/缓冲区7.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/06/缓冲区溢出漏洞/缓冲区8.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/06/缓冲区溢出漏洞/缓冲区9.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/06/缓冲区溢出漏洞/缓冲区10.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/06/缓冲区溢出漏洞/缓冲区11.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/06/缓冲区溢出漏洞/缓冲区12.png">
+<meta property="og:updated_time" content="2019-03-26T13:23:59.989Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="缓冲区溢出漏洞">
 <meta name="twitter:description" content="缓冲区溢出缓冲区溢出是指当计算机向缓冲区内填充数据时超过了缓冲区本身的容量，溢出的数据覆盖在合法数据上。">
-<meta name="twitter:image" content="https://i.imgur.com/6ZjBtLx.png">
+<meta name="twitter:image" content="http://yoursite.com/2019/03/06/缓冲区溢出漏洞/缓冲区1.png">
 
 
 
@@ -305,8 +305,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-03-14T20:57:06+08:00">
-                2019-03-14
+              <time title="Post modified" itemprop="dateModified" datetime="2019-03-26T21:23:59+08:00">
+                2019-03-26
               </time>
             
           </span>
@@ -354,27 +354,27 @@
 <ol>
 <li>进入实验环境，查看并测试环境所提供的buffer.c程序，其中buffer.c的源代码如下（这一步旨在帮助理解缓冲区溢出漏洞的原理）：<br> /<em>buffer.c</em>/<br> #include &lt;stdio.h&gt;<br> int main()<br>  {<br> char name[8];<br> printf(“Please input your name: ”);<br> gets(name);<br> printf(“your name is : %s!”, name);<br> return 0;<br>   }</li>
 </ol>
-<p>测试一下这段代码：<br><img src="https://i.imgur.com/6ZjBtLx.png" alt=""></p>
+<p>测试一下这段代码：<br><img src="/2019/03/06/缓冲区溢出漏洞/缓冲区1.png" alt=""></p>
 <ol start="2">
 <li>使用溢出工具获取靶机（10.1.1.2）的shell特权</li>
 </ol>
-<p>在cmd中查看溢出工具dns.exe并运行dns.exe，查看它的介绍及使用方法，红框中的为比较重要的。<br><img src="https://i.imgur.com/pq5iAK2.png" alt=""></p>
-<p>根据介绍开始尝试使用这个dns.exe工具，扫描靶机<br><img src="https://i.imgur.com/u0RGTK8.png" alt=""></p>
-<p>可以看到1027四个数字后面写着“易受攻击的”，根据dns.exe的介绍，加上我们用dns扫描出来的成果可以使用dns -t来对靶机进行溢出。<br><img src="https://i.imgur.com/mjoy2qs.png" alt=""></p>
+<p>在cmd中查看溢出工具dns.exe并运行dns.exe，查看它的介绍及使用方法，红框中的为比较重要的。<br><img src="/2019/03/06/缓冲区溢出漏洞/缓冲区2.png" alt=""></p>
+<p>根据介绍开始尝试使用这个dns.exe工具，扫描靶机<br><img src="/2019/03/06/缓冲区溢出漏洞/缓冲区3.png" alt=""></p>
+<p>可以看到1027四个数字后面写着“易受攻击的”，根据dns.exe的介绍，加上我们用dns扫描出来的成果可以使用dns -t来对靶机进行溢出。<br><img src="/2019/03/06/缓冲区溢出漏洞/缓冲区4.png" alt=""></p>
 <p>“port”是端口的意思，“bind”是捆绑的意思，大概读一下发现我们可以从1100这个端口进行攻击，接下来开始用telnet连接靶机！</p>
-<p>使用<code>telnet 10.1.1.2 1100</code>命令，进入如下页面<br><img src="https://i.imgur.com/WiBEUC4.png" alt=""></p>
-<p>接下来，我们确认一下我们是否拿到了靶机的shell，使用ipconfig来确定ip地址是否为10.1.1.2<br><img src="https://i.imgur.com/bStGIuw.png" alt=""></p>
+<p>使用<code>telnet 10.1.1.2 1100</code>命令，进入如下页面<br><img src="/2019/03/06/缓冲区溢出漏洞/缓冲区5.png" alt=""></p>
+<p>接下来，我们确认一下我们是否拿到了靶机的shell，使用ipconfig来确定ip地址是否为10.1.1.2<br><img src="/2019/03/06/缓冲区溢出漏洞/缓冲区6.png" alt=""></p>
 <p>成功了，我们已经通过dns这个溢出工具拿到了靶机的shell！接下来我们利用漏洞使靶机瘫痪！</p>
 <ol start="3">
 <li>使用MS12-020漏洞溢出靶机系统</li>
 </ol>
 <p>我们先启动metasploit console，博客的开始有介绍metasploit，可以再翻回去看一下<br>这里有metasploit的用法：<a href="https://www.cnblogs.com/panisme/p/8341598.html" target="_blank" rel="noopener">https://www.cnblogs.com/panisme/p/8341598.html</a></p>
-<p>成功进入界面如下<br><img src="https://i.imgur.com/PpCWz7S.png" alt=""></p>
-<p>接下来，在msf&gt;下使用<code>db_nmap -sT -p3389 10.1.1.2</code>对靶机进行扫描，简单分析一下得到的信息<br><img src="https://i.imgur.com/r059V08.png" alt=""></p>
-<p>下一步，我们要使用ms12_020漏洞进行攻击，所以我们先搜索一下这个漏洞的利用模块：<code>search ms12_020</code><br><img src="https://i.imgur.com/qk7RuSO.png" alt=""></p>
-<p>简单分析一下，红框下面有个“scanner”，所以它应该不能用来攻击，那我们就试试用红框里的<br>输入<code>use auxiliary/dos/windows/rdp/ms12_020_maxchannelids</code>并设置上参数，即靶机的ip地址，再用<code>show options</code>查看确认<br><img src="https://i.imgur.com/mFUuhuN.png" alt=""></p>
-<p>好的，万事具备，使用exploit命令开始攻击！<br><img src="https://i.imgur.com/WH09ubg.png" alt=""></p>
-<p>攻击完毕，我们在cmd中ping一下靶机的ip地址看看有什么结果。<br>这里说明一下，在合天上正常的显示应该是数据延迟，ping不出来东西，但我在做的时候，exploit攻击完毕后，cmd中会显示与主机断开连接，ping 10.1.1.2却还是正常的，只有数据的接受时间与延迟前后不太一样，我前前后后试了有六七次都是这样，有可能是这个漏洞年代久远，也可能是其它原因，所以，这个漏洞复现并没有完全成功，我会再寻找它的原因的！<br><img src="https://i.imgur.com/1quQEiD.png" alt=""></p>
+<p>成功进入界面如下<br><img src="/2019/03/06/缓冲区溢出漏洞/缓冲区7.png" alt=""></p>
+<p>接下来，在msf&gt;下使用<code>db_nmap -sT -p3389 10.1.1.2</code>对靶机进行扫描，简单分析一下得到的信息<br><img src="/2019/03/06/缓冲区溢出漏洞/缓冲区8.png" alt=""></p>
+<p>下一步，我们要使用ms12_020漏洞进行攻击，所以我们先搜索一下这个漏洞的利用模块：<code>search ms12_020</code><br><img src="/2019/03/06/缓冲区溢出漏洞/缓冲区9.png" alt=""></p>
+<p>简单分析一下，红框下面有个“scanner”，所以它应该不能用来攻击，那我们就试试用红框里的<br>输入<code>use auxiliary/dos/windows/rdp/ms12_020_maxchannelids</code>并设置上参数，即靶机的ip地址，再用<code>show options</code>查看确认<br><img src="/2019/03/06/缓冲区溢出漏洞/缓冲区10.png" alt=""></p>
+<p>好的，万事具备，使用exploit命令开始攻击！<br><img src="/2019/03/06/缓冲区溢出漏洞/缓冲区11.png" alt=""></p>
+<p>攻击完毕，我们在cmd中ping一下靶机的ip地址看看有什么结果。<br>这里说明一下，在合天上正常的显示应该是数据延迟，ping不出来东西，但我在做的时候，exploit攻击完毕后，cmd中会显示与主机断开连接，ping 10.1.1.2却还是正常的，只有数据的接受时间与延迟前后不太一样，我前前后后试了有六七次都是这样，有可能是这个漏洞年代久远，也可能是其它原因，所以，这个漏洞复现并没有完全成功，我会再寻找它的原因的！<br><img src="/2019/03/06/缓冲区溢出漏洞/缓冲区12.png" alt=""></p>
 <p>总结一下：攻击与防御思路真的很重要，每一步做什么，怎么做都至关重要，跳做一步，少做一步，都有可能使攻击失败，只有脑海中有大概的思路，明确每一步做什么，一步一步走，而且千万要细心，有时候打错一个大小写就要重新来一遍。作为复现。。半成功的第一个漏洞，给自己打个7分吧，1分扣在没有成功，一分扣在中间的失误步骤多，还有一分扣在效率低。继续加油吧！</p>
 
       
@@ -497,7 +497,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -577,7 +577,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">23.0k</span>
+    <span title="Site words total count">23.2k</span>
   
 </div>
 

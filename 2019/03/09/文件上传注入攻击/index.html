@@ -81,20 +81,20 @@
 <meta property="og:site_name" content="Blog">
 <meta property="og:description" content="文件上传注入攻击系统管理员都有过系统被上传后门、木马或者是网页被人篡改的经历，这类攻击大部分是通过文件上传来是实现的。文件上传漏洞是指网络攻击者上传了一个可执行文件到服务器并执行。这里上传的文件可以是木马、病毒、恶意脚本或者WebShell等。这种攻击方式是最为直接和有效的，部分文件上传漏洞的利用技术门槛非常的低，对于攻击者来说很容易实施。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://i.imgur.com/aGNb9PY.png">
-<meta property="og:image" content="https://i.imgur.com/TtXTXel.png">
-<meta property="og:image" content="https://i.imgur.com/vRwt6dw.png">
-<meta property="og:image" content="https://i.imgur.com/w6Jlwky.png">
-<meta property="og:image" content="https://i.imgur.com/kpGw9SP.png">
-<meta property="og:image" content="https://i.imgur.com/emFXVvq.png">
-<meta property="og:image" content="https://i.imgur.com/15cL8sZ.png">
-<meta property="og:image" content="https://i.imgur.com/qc40KfE.png">
-<meta property="og:image" content="https://i.imgur.com/jzsDahm.png">
-<meta property="og:updated_time" content="2019-03-09T12:22:46.104Z">
+<meta property="og:image" content="http://yoursite.com/2019/03/09/文件上传注入攻击/文件上传1.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/09/文件上传注入攻击/文件上传2.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/09/文件上传注入攻击/文件上传3.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/09/文件上传注入攻击/文件上传4.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/09/文件上传注入攻击/文件上传5.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/09/文件上传注入攻击/文件上传6.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/09/文件上传注入攻击/文件上传7.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/09/文件上传注入攻击/文件上传8.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/09/文件上传注入攻击/文件上传9.png">
+<meta property="og:updated_time" content="2019-03-26T13:27:19.646Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="文件上传注入攻击">
 <meta name="twitter:description" content="文件上传注入攻击系统管理员都有过系统被上传后门、木马或者是网页被人篡改的经历，这类攻击大部分是通过文件上传来是实现的。文件上传漏洞是指网络攻击者上传了一个可执行文件到服务器并执行。这里上传的文件可以是木马、病毒、恶意脚本或者WebShell等。这种攻击方式是最为直接和有效的，部分文件上传漏洞的利用技术门槛非常的低，对于攻击者来说很容易实施。">
-<meta name="twitter:image" content="https://i.imgur.com/aGNb9PY.png">
+<meta name="twitter:image" content="http://yoursite.com/2019/03/09/文件上传注入攻击/文件上传1.png">
 
 
 
@@ -302,8 +302,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-03-09T20:22:46+08:00">
-                2019-03-09
+              <time title="Post modified" itemprop="dateModified" datetime="2019-03-26T21:27:19+08:00">
+                2019-03-26
               </time>
             
           </span>
@@ -343,9 +343,9 @@
 </code></pre><p><strong>信息来源——合天网安实验室</strong></p>
 <p>接下来开始实验</p>
 <ol>
-<li><p>服务器端程序获取上传文件名保存到相应位置<br>关键代码如下：<br><img src="https://i.imgur.com/aGNb9PY.png" alt=""><br>basename() 函数返回路径中的文件名部分。<br>move_uploaded_file() 函数将上传的文件移动到新位置，若成功，则返回 true，否则返回 false。根据服务器端代码的提示，上传php文件。<br>这是基础的不能再基础的一项实验了，就是让我们先对文件上传有个认识。<br>我们先创建一个后缀名为php的文件，上传后让服务器解析：<br><img src="https://i.imgur.com/TtXTXel.png" alt=""><br>从代码来看我们已经上传成功<br><img src="https://i.imgur.com/vRwt6dw.png" alt=""><br>接下来我们看一下服务器是否解析<br><img src="https://i.imgur.com/w6Jlwky.png" alt=""><br>非常简单吧。。。我们还可以改改后缀名，什么都可以，因为这个最简单的没有进行任何过滤筛选，上传它就能接受。<br><img src="https://i.imgur.com/kpGw9SP.png" alt=""><br>这个真的。。。。没有难度。。。。评论上有个人说第一个太简单了不用做。。。。不多说了，第二个吧。</p>
+<li><p>服务器端程序获取上传文件名保存到相应位置<br>关键代码如下：<br><img src="/2019/03/09/文件上传注入攻击/文件上传1.png" alt=""><br>basename() 函数返回路径中的文件名部分。<br>move_uploaded_file() 函数将上传的文件移动到新位置，若成功，则返回 true，否则返回 false。根据服务器端代码的提示，上传php文件。<br>这是基础的不能再基础的一项实验了，就是让我们先对文件上传有个认识。<br>我们先创建一个后缀名为php的文件，上传后让服务器解析：<br><img src="/2019/03/09/文件上传注入攻击/文件上传2.png" alt=""><br>从代码来看我们已经上传成功<br><img src="/2019/03/09/文件上传注入攻击/文件上传3.png" alt=""><br>接下来我们看一下服务器是否解析<br><img src="/2019/03/09/文件上传注入攻击/文件上传4.png" alt=""><br>非常简单吧。。。我们还可以改改后缀名，什么都可以，因为这个最简单的没有进行任何过滤筛选，上传它就能接受。<br><img src="/2019/03/09/文件上传注入攻击/文件上传5.png" alt=""><br>这个真的。。。。没有难度。。。。评论上有个人说第一个太简单了不用做。。。。不多说了，第二个吧。</p>
 </li>
-<li><p>利用文件解析漏洞上传php文件<br>原理分析：服务器端代码过滤文件后缀为“.php”的文件类型，如果上传文件包含“.php”,则程序输出不允许上传错误提示并退出。<br>关键代码如下：<br><img src="https://i.imgur.com/emFXVvq.png" alt=""><br>还是preg_match()函数，上篇有说过。<br>这段代码表示上传的文件为php的话会被过滤导致上传失败，仔细看代码，会发现有个“NO PHP”，那我们就改一下文件后缀名为PHP试一试。<br><img src="https://i.imgur.com/15cL8sZ.png" alt=""><br>上传一下<br><img src="https://i.imgur.com/qc40KfE.png" alt=""><br>上传成功，看一下结果吧<br><img src="https://i.imgur.com/jzsDahm.png" alt=""></p>
+<li><p>利用文件解析漏洞上传php文件<br>原理分析：服务器端代码过滤文件后缀为“.php”的文件类型，如果上传文件包含“.php”,则程序输出不允许上传错误提示并退出。<br>关键代码如下：<br><img src="/2019/03/09/文件上传注入攻击/文件上传6.png" alt=""><br>还是preg_match()函数，上篇有说过。<br>这段代码表示上传的文件为php的话会被过滤导致上传失败，仔细看代码，会发现有个“NO PHP”，那我们就改一下文件后缀名为PHP试一试。<br><img src="/2019/03/09/文件上传注入攻击/文件上传7.png" alt=""><br>上传一下<br><img src="/2019/03/09/文件上传注入攻击/文件上传8.png" alt=""><br>上传成功，看一下结果吧<br><img src="/2019/03/09/文件上传注入攻击/文件上传9.png" alt=""></p>
 </li>
 </ol>
 <p>实验书没有了，就这两个。。。。实在是有点说不过去，这才知道个皮毛，过一段我再去找几道CTF的题练一练巩固一下吧。<br>还了解到可以用burpsite抓包，修改文件后缀名再进行上传，也是一种思路，不过最重要的还是分析代码。</p>
@@ -471,7 +471,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -551,7 +551,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">23.0k</span>
+    <span title="Site words total count">23.2k</span>
   
 </div>
 

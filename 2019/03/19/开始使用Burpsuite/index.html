@@ -81,19 +81,19 @@
 <meta property="og:site_name" content="Blog">
 <meta property="og:description" content="开始使用BurpsuiteBurpsuite是用于攻击web应用程序的集成平台，包含了许多工具。Burpsuite为这些工具设计了许多接口，以加快攻击应用程序的过程。所有工具都共享一个请求，并能处理对应的HTTP消息、持久性、认证、代理、日志、警报。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://i.imgur.com/aALrMvH.png">
-<meta property="og:image" content="https://i.imgur.com/JAn9y8c.png">
-<meta property="og:image" content="https://i.imgur.com/hW15aRv.png">
-<meta property="og:image" content="https://i.imgur.com/DPmLaKJ.png">
-<meta property="og:image" content="https://i.imgur.com/vef7xBP.png">
-<meta property="og:image" content="https://i.imgur.com/uBmSEyh.png">
-<meta property="og:image" content="https://i.imgur.com/BA36iO3.png">
-<meta property="og:image" content="https://i.imgur.com/TtkMpOp.png">
-<meta property="og:updated_time" content="2019-03-19T09:38:13.638Z">
+<meta property="og:image" content="http://yoursite.com/2019/03/19/开始使用Burpsuite/burp0.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/19/开始使用Burpsuite/burp1.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/19/开始使用Burpsuite/burp2.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/19/开始使用Burpsuite/burp3.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/19/开始使用Burpsuite/burp4.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/19/开始使用Burpsuite/burp5.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/19/开始使用Burpsuite/burp6.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/19/开始使用Burpsuite/burp7.png">
+<meta property="og:updated_time" content="2019-03-26T13:25:35.436Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="开始使用Burpsuite">
 <meta name="twitter:description" content="开始使用BurpsuiteBurpsuite是用于攻击web应用程序的集成平台，包含了许多工具。Burpsuite为这些工具设计了许多接口，以加快攻击应用程序的过程。所有工具都共享一个请求，并能处理对应的HTTP消息、持久性、认证、代理、日志、警报。">
-<meta name="twitter:image" content="https://i.imgur.com/aALrMvH.png">
+<meta name="twitter:image" content="http://yoursite.com/2019/03/19/开始使用Burpsuite/burp0.png">
 
 
 
@@ -301,8 +301,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-03-19T17:38:13+08:00">
-                2019-03-19
+              <time title="Post modified" itemprop="dateModified" datetime="2019-03-26T21:25:35+08:00">
+                2019-03-26
               </time>
             
           </span>
@@ -336,16 +336,15 @@
 
       
         <h1 id="开始使用Burpsuite"><a href="#开始使用Burpsuite" class="headerlink" title="开始使用Burpsuite"></a>开始使用Burpsuite</h1><p>Burpsuite是用于攻击web应用程序的集成平台，包含了许多工具。Burpsuite为这些工具设计了许多接口，以加快攻击应用程序的过程。所有工具都共享一个请求，并能处理对应的HTTP消息、持久性、认证、代理、日志、警报。<a id="more"></a>当Burpsuite 运行后，Burp Proxy开启默认的8080端口作为本地代理接口。通过置一个web浏览器使用其代理服务器，所有的网站流量可以被拦截，查看和修改。默认情况下，对非媒体资源的请求将被拦截并显示(可以通过Burp Proxy 选项里的options选项修改默认值)。对所有通过Burp Proxy 网站流量使用预设的方案进行分析，然后纳入到目标站点地图中，来勾勒出一张包含访问的应用程序的内容和功能的画面。在Burp Suite 专业版中，默认情况下，Burp Scanner是被动地分析所有的请求来确定一系列的安全漏洞。</p>
-<h2 id="一、环境配置"><a href="#一、环境配置" class="headerlink" title="一、环境配置"></a>一、环境配置</h2><p>Burpsuite的运行需要java环境。这里要特别说明一下，专业版的Burpsuite需要用keygen来使用，所以一定要安装JRE，前面我在尝试的时候安装了JDK和java都无法运行，安装过JRE后才可以，后面会说到这里的。这里附上最新版本的JRE下载链接：<a href="https://pan.baidu.com/s/1q90fsZlcEHZVHsB8HJnqTQ" target="_blank" rel="noopener">https://pan.baidu.com/s/1q90fsZlcEHZVHsB8HJnqTQ</a>  提取码：6jhn<br>安装完成后在cmd下输入：<code>java -version</code>，如果返回了版本号说明安装成功：<br><img src="https://i.imgur.com/aALrMvH.png" alt=""></p>
-<h2 id="二、安装Burpsuite-pro"><a href="#二、安装Burpsuite-pro" class="headerlink" title="二、安装Burpsuite pro"></a>二、安装Burpsuite pro</h2><p>打开burp-loader-keygen.jar：<br><img src="https://i.imgur.com/JAn9y8c.png" alt=""></p>
-<p>点击run后会弹出窗口（如果没有安装JRE会没有反应），将license里的内容复制到窗口中：<br><img src="https://i.imgur.com/hW15aRv.png" alt=""></p>
-<p>点击next后再点击Manual activation：<br><img src="https://i.imgur.com/DPmLaKJ.png" alt=""></p>
-<p>点击copy request，再粘贴到burp-loader-keygen.jar中的Activation Request中：<br><img src="https://i.imgur.com/vef7xBP.png" alt=""><br><img src="https://i.imgur.com/uBmSEyh.png" alt=""></p>
-<p>下面的框框会自动生成文本，复制文本再填入激活框中：<br><img src="https://i.imgur.com/BA36iO3.png" alt=""></p>
-<p>点击next，看到如下页面说明已经成功了：<br><img src="https://i.imgur.com/TtkMpOp.png" alt=""></p>
+<h2 id="一、环境配置"><a href="#一、环境配置" class="headerlink" title="一、环境配置"></a>一、环境配置</h2><p>Burpsuite的运行需要java环境。这里要特别说明一下，专业版的Burpsuite需要用keygen来使用，所以一定要安装JRE，前面我在尝试的时候安装了JDK和java都无法运行，安装过JRE后才可以，后面会说到这里的。这里附上最新版本的JRE下载链接：<a href="https://pan.baidu.com/s/1q90fsZlcEHZVHsB8HJnqTQ" target="_blank" rel="noopener">https://pan.baidu.com/s/1q90fsZlcEHZVHsB8HJnqTQ</a>  提取码：6jhn<br>安装完成后在cmd下输入：<code>java -version</code>，如果返回了版本号说明安装成功：<br><img src="/2019/03/19/开始使用Burpsuite/burp0.png" alt=""></p>
+<h2 id="二、安装Burpsuite-pro"><a href="#二、安装Burpsuite-pro" class="headerlink" title="二、安装Burpsuite pro"></a>二、安装Burpsuite pro</h2><p>打开burp-loader-keygen.jar：<br><img src="/2019/03/19/开始使用Burpsuite/burp1.png" alt=""></p>
+<p>点击run后会弹出窗口（如果没有安装JRE会没有反应），将license里的内容复制到窗口中：<br><img src="/2019/03/19/开始使用Burpsuite/burp2.png" alt=""></p>
+<p>点击next后再点击Manual activation：<br><img src="/2019/03/19/开始使用Burpsuite/burp3.png" alt=""></p>
+<p>点击copy request，再粘贴到burp-loader-keygen.jar中的Activation Request中：<br><img src="/2019/03/19/开始使用Burpsuite/burp4.png" alt=""><br><img src="/2019/03/19/开始使用Burpsuite/burp5.png" alt=""></p>
+<p>下面的框框会自动生成文本，复制文本再填入激活框中：<br><img src="/2019/03/19/开始使用Burpsuite/burp6.png" alt=""></p>
+<p>点击next，看到如下页面说明已经成功了：<br><img src="/2019/03/19/开始使用Burpsuite/burp7.png" alt=""></p>
 <p>需要注意的是，打开Burpsuite必须要先打开burp-loader-keygen.jar，再点击run运行。这里提供一个简单的方法：在burp-loader-keygen.jar和Burpsuite同目录下创建一个bat文件，里面写入<br><code>java -Xbootclasspath/p:burp-loader-keygen.jar -jar burpsuite_pro_v2.0.05beta.jar</code>，然后直接打开bat文件就可以打开了。（bat文件附带在压缩包内）</p>
 <p>下载链接：<a href="https://pan.baidu.com/s/1-IbMUNBKJDUSKU1Z5Hgb-g" target="_blank" rel="noopener">https://pan.baidu.com/s/1-IbMUNBKJDUSKU1Z5Hgb-g</a> 提取码：szot </p>
-<h2 id="三、使用Burpsuite-pro"><a href="#三、使用Burpsuite-pro" class="headerlink" title="三、使用Burpsuite pro"></a>三、使用Burpsuite pro</h2><p>先对Burpsuite的各个栏目了解一下：<br>|栏目|释义|功能|<br>|:-:|:-:|:-:|<br>|Target|目标|显示目标目录结构的的一个功能|<br>|Proxy|代理|拦截HTTP/S的代理服务器，作为一个在浏览器和目标应用程序之间的中间人，允许你拦截，查看，修改在两个方向上的原始数据流。|</p>
 
       
     </div>
@@ -385,6 +384,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/26/phpmyadmin文件包含/" rel="prev" title="phpmyadmin文件包含">
+                phpmyadmin文件包含 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -463,7 +466,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -509,7 +512,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#开始使用Burpsuite"><span class="nav-number">1.</span> <span class="nav-text">开始使用Burpsuite</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、环境配置"><span class="nav-number">1.1.</span> <span class="nav-text">一、环境配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、安装Burpsuite-pro"><span class="nav-number">1.2.</span> <span class="nav-text">二、安装Burpsuite pro</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、使用Burpsuite-pro"><span class="nav-number">1.3.</span> <span class="nav-text">三、使用Burpsuite pro</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#开始使用Burpsuite"><span class="nav-number">1.</span> <span class="nav-text">开始使用Burpsuite</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、环境配置"><span class="nav-number">1.1.</span> <span class="nav-text">一、环境配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、安装Burpsuite-pro"><span class="nav-number">1.2.</span> <span class="nav-text">二、安装Burpsuite pro</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -543,7 +546,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">23.0k</span>
+    <span title="Site words total count">23.2k</span>
   
 </div>
 
